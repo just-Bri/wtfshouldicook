@@ -32,7 +32,7 @@ export default class App extends Component {
     });
   };
   getRecipe = () => {
-    // do some fetching shit
+    // fetch using this.state.cuisine && this.state.complexity
     console.log('getRecipe called');
   };
   updateComplexity = (e, complexity) => {
@@ -56,7 +56,7 @@ export default class App extends Component {
             updateCraving: this.updateCraving,
             updateCuisine: this.updateCuisine,
             updateComplexity: this.updateComplexity,
-            apiResult: this.state.recipe,
+            recipeToDisplay: this.state.recipe,
           }}
         >
           <Router>
