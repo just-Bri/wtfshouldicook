@@ -9,22 +9,30 @@ export default class QuestionOpening extends Component {
       <section className='opening-question'>
         <h3>Answer a few simple questions and get a recipe!</h3>
         <label>Craving a certain cuisine?</label>
-        <button
-          className='answer-button'
-          onClick={e => {
-            this.context.updateCraving(e, 'yes');
-          }}
-        >
-          <Link to='/cuisine'>Yes!</Link>
-        </button>
-        <button
-          className='answer-button'
-          onClick={e => {
-            this.context.updateCraving(e, 'no');
-          }}
-        >
-          <Link to='/complexity'>No.</Link>
-        </button>
+        <ul className='craving-options'>
+          <li className='craving-option-container'>
+            <Link
+              className='link-to-cuisine'
+              to='/cuisine'
+              onClick={e => {
+                this.context.updateCraving(e, 'yes');
+              }}
+            >
+              Yes!
+            </Link>
+          </li>
+          <li className='craving-option-container'>
+            <Link
+              className='link-to-complexity'
+              to='/complexity'
+              onClick={e => {
+                this.context.updateCraving(e, 'no');
+              }}
+            >
+              No.
+            </Link>
+          </li>
+        </ul>
       </section>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import AppContext from './AppContext';
 import OpeningQuestion from '../Questions/QuestionOpening';
 import QuestionCuisine from '../Questions/QuestionCuisine';
@@ -17,15 +18,13 @@ export default class App extends Component {
     };
   }
 
-  updateCraving = (e, craving) => {
-    e.preventDefault();
+  updateCraving = craving => {
     console.log('this.state.craving is being set to: ' + craving);
     this.setState({
       craving: craving,
     });
   };
-  updateCuisine = (e, cuisine) => {
-    e.preventDefault();
+  updateCuisine = cuisine => {
     console.log('this.state.cuisine is being set to: ' + cuisine);
     this.setState({
       cuisine: cuisine,
@@ -35,8 +34,7 @@ export default class App extends Component {
     // fetch using this.state.cuisine && this.state.complexity
     console.log('getRecipe called');
   };
-  updateComplexity = (e, complexity) => {
-    e.preventDefault();
+  updateComplexity = complexity => {
     console.log('this.state.complexity is being set to: ' + complexity);
     this.setState(
       {

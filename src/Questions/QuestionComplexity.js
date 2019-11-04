@@ -10,22 +10,26 @@ export default class QuestionComplexity extends Component {
         <h3>Feeling adventorous?</h3>
         <ul className='complexity-options-list'>
           <li className='complexity-option'>
-            <button
+            <Link
+              className='link-to-recipe'
+              to='/recipe'
               onClick={e => {
                 this.context.updateComplexity(e, 'yes');
               }}
             >
-              <Link to='/recipe'>Yes!</Link>
-            </button>
+              Yes!
+            </Link>
           </li>
           <li className='complexity-option'>
-            <button
+            <Link
+              className='link-to-recipe'
+              to='/recipe'
               onClick={e => {
                 this.context.updateComplexity(e, 'no');
               }}
             >
-              <Link to='/recipe'>No.</Link>
-            </button>
+              No.
+            </Link>
           </li>
         </ul>
       </section>
