@@ -28,7 +28,13 @@ export default class QuestionCuisine extends Component {
                 cuisine: 'British',
               }}
             >
-              <button>British</button>
+              <button
+                onClick={e => {
+                  this.context.updateCuisine(e, 'british');
+                }}
+              >
+                British
+              </button>
             </Link>
           </li>
           <li className='cuisine-option'>
@@ -38,12 +44,24 @@ export default class QuestionCuisine extends Component {
                 cuisine: 'Chinese',
               }}
             >
-              <button>Chinese</button>
+              <button
+                onClick={e => {
+                  this.context.updateCuisine(e, 'chinese');
+                }}
+              >
+                Chinese
+              </button>
             </Link>
           </li>
           <li className='cuisine-option'>
             <Link to={{ pathname: '/complexity', cuisine: 'French' }}>
-              <button>French</button>
+              <button
+                onClick={e => {
+                  this.context.updateCuisine(e, 'french');
+                }}
+              >
+                French
+              </button>
             </Link>
           </li>
           <li className='cuisine-option'>
@@ -58,7 +76,13 @@ export default class QuestionCuisine extends Component {
                 cuisine: 'Italian',
               }}
             >
-              <button>Italian</button>
+              <button
+                onClick={e => {
+                  this.context.updateCuisine(e, 'italian');
+                }}
+              >
+                Italian
+              </button>
             </Link>
           </li>
           {/* E FIX */}

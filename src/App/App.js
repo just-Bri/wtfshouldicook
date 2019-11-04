@@ -71,7 +71,7 @@ export default class App extends Component {
               )}
             </Route>
             <Route exact path='/complexity'>
-              {this.state.cuisine === '' ? (
+              {this.state.craving === '' ? (
                 <OpeningQuestion />
               ) : (
                 <QuestionComplexity />
