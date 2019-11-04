@@ -7,7 +7,9 @@ export default class QuestionOpening extends Component {
   render() {
     return (
       <section className='opening-question'>
-        <h3>Answer a few simple questions and get a recipe!</h3>
+        <h3 className='opening-header header'>
+          Answer a few simple questions and get a recipe!
+        </h3>
         <label>Craving a certain cuisine?</label>
         <ul className='craving-options'>
           <li className='craving-option-container'>

@@ -7,7 +7,7 @@ export default class QuestionComplexity extends Component {
   render() {
     return (
       <section className='complexity-options-container'>
-        <h3>Feeling adventorous?</h3>
+        <h3 className='adventurous-header header'>Feeling adventorous?</h3>
         <ul className='complexity-options-list'>
           <li className='complexity-option'>
             <Link

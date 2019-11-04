@@ -4,14 +4,24 @@ body {
   text-align: center;
   margin: 0 auto;
   width: fit-content;
+  margin-top: 2rem;
+  background-color: black;
+  color: white;
 }
 a {
   display: block;
   width: fit-content;
   padding: 0.5rem;
   margin: 0.25rem;
+  text-decoration: none;
+}
+a:visited {
+  color: white;
 }
 ul {
   width: fit-content;
   margin: 0 auto;
+}
+.header {
+  margin-bottom: 1rem;
 }

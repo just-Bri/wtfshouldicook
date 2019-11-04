@@ -7,7 +7,7 @@ export default class QuestionCuisine extends Component {
   render() {
     return (
       <section className='cuisine-options-container'>
-        <h3 className='cuisine-header'>What sounds good?</h3>
+        <h3 className='cuisine-header header'>What sounds good?</h3>
         <ul className='cuisine-options-list'>
           {/* S FIX */}
           {/* Refactor this to a function that pulls
