@@ -13,15 +13,6 @@ export default class QuestionCuisine extends Component {
           {/* Refactor this to a function that pulls
               cuisine options from the database */}
           <li className='cuisine-option'>
-            <button
-              onClick={e => {
-                this.context.updateCuisine(e, 'american');
-              }}
-            >
-              <Link to='/complexity'>American</Link>
-            </button>
-          </li>
-          <li className='cuisine-option'>
             <Link
               to={{
                 pathname: '/complexity',
@@ -84,6 +75,15 @@ export default class QuestionCuisine extends Component {
                 Italian
               </button>
             </Link>
+          </li>
+          <li className='cuisine-option'>
+            <button
+              onClick={e => {
+                this.context.updateCuisine(e, 'mexican');
+              }}
+            >
+              <Link to='/complexity'>Mexican</Link>
+            </button>
           </li>
           {/* E FIX */}
         </ul>
