@@ -18,6 +18,10 @@ export default class Recipe extends Component {
           <li className='ingredient'>$four</li>
           <li className='ingredient'>$etc</li>
         </ul>
+        <h3>Hardware(if needed)</h3>
+        <ul className='hardware-list'>
+          <li className='hardware'>$one</li>
+        </ul>
         <h3>Prep Time: $minutes</h3>
         <h3>Cook Time: $minutes</h3>
         <h3>Total Time: $minutes</h3>
