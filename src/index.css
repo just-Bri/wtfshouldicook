@@ -21,9 +21,10 @@ a {
   margin: 0.25rem;
   text-decoration: none;
   text-align: center;
+  color: #81a1c1;
 }
 a:visited {
-  color: #81a1c1;
+  color: #81a1c1 --important;
 }
 ul {
   width: fit-content;
