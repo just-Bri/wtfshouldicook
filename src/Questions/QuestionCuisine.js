@@ -7,8 +7,8 @@ export default class QuestionCuisine extends Component {
   render() {
     return (
       <section className='cuisine-options-container'>
-        <h3 className='cuisine-header header'>What sounds good?</h3>
-        <ul className='cuisine-options-list'>
+        <label className='cuisine-header header'>What sounds good?</label>
+        <ul className='cuisine-options-list option-list'>
           {/* S FIX */}
           {/* Refactor this to a function that pulls
               cuisine options from the database */}

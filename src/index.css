@@ -1,22 +1,29 @@
 @import '../node_modules/css-reset-and-normalize/css/reset-and-normalize.min.css';
+@font-face {
+  font-family: 'Cascadia';
+  src: local('Cascadia'),
+    url(./fonts/CascadiaCode-Regular-VTT.ttf) format('truetype');
+}
 
 body {
+  font-family: Cascadia;
+  font-weight: 300;
   text-align: center;
   margin: 0 auto;
   width: fit-content;
   margin-top: 2rem;
-  background-color: black;
-  color: white;
+  background-color: #2e3440;
+  color: #81a1c1;
 }
 a {
   display: block;
-  width: fit-content;
   padding: 0.5rem;
   margin: 0.25rem;
   text-decoration: none;
+  text-align: center;
 }
 a:visited {
-  color: white;
+  color: #81a1c1;
 }
 ul {
   width: fit-content;
@@ -24,4 +31,18 @@ ul {
 }
 .header {
   margin-bottom: 1rem;
+  display: block;
+}
+
+.option-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.option-list li {
+  border: 1px solid #81a1c1;
+  margin: 0.25rem;
 }

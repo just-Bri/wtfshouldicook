@@ -10,8 +10,8 @@ export default class QuestionOpening extends Component {
         <h3 className='opening-header header'>
           Answer a few simple questions and get a recipe!
         </h3>
-        <label>Craving a certain cuisine?</label>
-        <ul className='craving-options'>
+        <label className='header'>Craving a certain cuisine?</label>
+        <ul className='craving-options option-list'>
           <li className='craving-option-container'>
             <Link
               className='link-to-cuisine'
