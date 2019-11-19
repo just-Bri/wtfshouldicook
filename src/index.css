@@ -1,8 +1,8 @@
-@import '../node_modules/css-reset-and-normalize/css/reset-and-normalize.min.css';
+@import "../node_modules/css-reset-and-normalize/css/reset-and-normalize.min.css";
 @font-face {
-  font-family: 'Cascadia';
-  src: local('Cascadia'),
-    url(./fonts/CascadiaCode-Regular-VTT.ttf) format('truetype');
+  font-family: "Cascadia";
+  src: local("Cascadia"),
+    url(./fonts/CascadiaCode-Regular-VTT.ttf) format("truetype");
 }
 
 body {
@@ -10,10 +10,12 @@ body {
   font-weight: 300;
   text-align: center;
   margin: 0 auto;
-  width: fit-content;
-  margin-top: 2rem;
+  /* width: fit-content; */
   background-color: #2e3440;
   color: #81a1c1;
+}
+main {
+  clear: right;
 }
 a {
   display: block;
