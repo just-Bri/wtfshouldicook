@@ -7,7 +7,6 @@ import QuestionCuisine from "../Questions/QuestionCuisine";
 import QuestionComplexity from "../Questions/QuestionComplexity";
 import Recipe from "../Recipe/Recipe";
 import TopBar from "../TopBar/TopBar";
-import Login from "../Account/Login/Login";
 
 export default class App extends Component {
   constructor() {
@@ -21,9 +20,17 @@ export default class App extends Component {
     };
   }
 
-  updateLoggedIn = () => {
+  logIn = e => {
+    e.preventDefault();
     this.setState({
-      loggedIn: !this.state.loggedIn
+      loggedIn: true
+    });
+  };
+
+  logOut = e => {
+    e.preventDefault();
+    this.setState({
+      loggedIn: false
     });
   };
 
@@ -33,26 +40,24 @@ export default class App extends Component {
       craving: craving
     });
   };
+
   updateCuisine = cuisine => {
     console.log("this.state.cuisine is being set to: " + cuisine);
     this.setState({
       cuisine: cuisine
     });
   };
+
   getRecipe = () => {
     // fetch using this.state.cuisine && this.state.complexity
     console.log("getRecipe called");
   };
+
   updateComplexity = complexity => {
     console.log("this.state.complexity is being set to: " + complexity);
-    this.setState(
-      {
-        complexity: complexity
-      },
-      () => {
-        this.getRecipe();
-      }
-    );
+    this.setState({
+      complexity: complexity
+    });
   };
 
   render() {
@@ -65,7 +70,8 @@ export default class App extends Component {
             updateComplexity: this.updateComplexity,
             recipeToDisplay: this.state.recipe,
             loggedIn: this.state.loggedIn,
-            logOut: this.updateLoggedIn
+            logIn: this.logIn,
+            logOut: this.ogOut
           }}
         >
           <TopBar />
@@ -94,9 +100,6 @@ export default class App extends Component {
                 ) : (
                   <Recipe />
                 )}
-              </Route>
-              <Route exact path="/login">
-                <Login />
               </Route>
             </Router>
           </main>
