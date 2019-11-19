@@ -1,4 +1,4 @@
 export default {
-  API_ENDPOINT: "https://stark-refuge-02796.herokuapp.com/api",
+  API_ENDPOINT: "",
   TOKEN_KEY: "testing-key"
 };
