@@ -34,11 +34,23 @@
 .hardware-fieldset {
   grid-area: 4 / 1 / 5 / 2;
 }
-.ingredients-fieldset,
-.hardware-fieldset {
-  margin-bottom: 0.5rem;
+.ingredients-input-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 15rem;
 }
 .ingredients-fieldset legend,
-.hardware-fieldset legend {
+.hardware-fieldset legend,
+.ingredients-fieldset button,
+.hardware-fieldset button,
+.ingredients-input-container label,
+.ingredients-input-container input,
+.hardware-input-container label,
+.hardware-input-container input,
+.ingredients-fieldset,
+.hardware-fieldset,
+.recipe-submit-button {
   margin-bottom: 0.5rem;
 }

@@ -2,51 +2,35 @@ import React, { Component } from "react";
 import "./Submit.css";
 
 export default class Submit extends Component {
-  state = {
-    ingredients: [{ name: "", amount: "" }],
-    ingName: "",
-    ingAmount: "",
-    hardware: [{ name: "" }],
-    hardwareName: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      pictureUrl: "",
+      prepTime: "",
+      cookTime: "",
+      ingredients: []
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-  addIngredientField = e => {
-    this.setState(prevState => ({
-      ingredients: [...prevState.ingredients, { name: "", amount: "" }]
-    }));
-  };
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
 
-  handleAddIng = e => {
+  addIngredientField = () => {
+    this.setState({
+      ingredients: [...this.state.ingredients, { name: "", amount: "" }]
+    });
+  };
+  handleSubmit = e => {
     e.preventDefault();
-    if (["name", "amount"].includes(e.target.className)) {
-      let ingredients = [...this.state.ingredients];
-      ingredients[e.target.dataset.id][e.target.className] = e.target.value;
-      this.setState({ ingredients }, () => console.log(this.state.ingredients));
-    } else {
-      this.setState({ [e.target.name]: e.target.value });
-    }
+    this.state.ingredients.length < 2
+      ? alert("please add some ing")
+      : console.log(this.state, "recipe submitted!");
   };
-
-  addHardwareField = e => {
-    this.setState(prevState => ({
-      hardware: [...prevState.hardware, { name: "" }]
-    }));
-  };
-
-  handleAddHardware = e => {
-    e.preventDefault();
-    if (["name"].includes(e.target.className)) {
-      let hardware = [...this.state.hardware];
-      hardware[e.target.dataset.id][e.target.className] = e.target.value;
-      this.setState({ hardware }, () => console.log(this.state.hardware));
-    } else {
-      this.setState({ [e.target.name]: e.target.value });
-    }
-  };
-
-  addHardware = {};
   render() {
-    let { ingredients, hardware } = this.state;
+    let { ingredients } = this.state;
     return (
       <form className="submit-form" onSubmit={this.handleSubmit}>
         <fieldset className="submit-fieldset">
@@ -54,19 +38,41 @@ export default class Submit extends Component {
           <fieldset className="details-fieldset">
             <section className="name-container">
               <label>Name</label>
-              <input type="text" required />
+              <input
+                type="text"
+                onChange={this.handleChange}
+                name="name"
+                required
+              />
             </section>
             <section className="url-container">
               <label>Picture Url</label>
-              <input type="text" />
+              <input
+                type="text"
+                onChange={this.handleChange}
+                name="pictureUrl"
+                value={this.state.pictureUrl}
+              />
             </section>
             <section className="prep-container">
               <label>Prep Time</label>
-              <input type="number" />
+              <input
+                type="number"
+                onChange={this.handleChange}
+                name="prepTime"
+                placeholder="in minutes"
+                required
+              />
             </section>
             <section className="cook-container">
               <label>Cook Time</label>
-              <input type="number" />
+              <input
+                type="number"
+                onChange={this.handleChange}
+                name="cookTime"
+                placeholder="in minutes"
+                required
+              />
             </section>
           </fieldset>
           <fieldset className="ingredients-fieldset">
@@ -76,30 +82,30 @@ export default class Submit extends Component {
               let ingId = `ing-${idx}`,
                 amountId = `amount-${idx}`;
               return (
-                <div key={idx}>
-                  <label htmlFor={ingId}>{`Ing #${idx + 1}`}</label>
-                  <input type="text"></input>
-                  <label htmlFor={amountId}>{`Amnt #${idx + 1}`}</label>
-                  <input type="number"></input>
-                </div>
-              );
-            })}
-          </fieldset>
-          <fieldset className="hardware-fieldset">
-            <legend>Hardware</legend>
-            <button onClick={this.addHardwareField}>Add hardware</button>
-            {hardware.map((val, idx) => {
-              let hardwareId = `hardware-${idx}`;
-              return (
-                <div key={idx}>
-                  <label htmlFor={hardwareId}>{`Ing #${idx + 1}`}</label>
-                  <input type="text"></input>
-                </div>
+                <section key={idx} className="ingredients-input-container">
+                  <label
+                    htmlFor={ingId}
+                    className="ingredient-name-label"
+                  >{`Ingredient #${idx + 1}`}</label>
+                  <input
+                    type="text"
+                    onChange={this.handleChange}
+                    name={`ingredient-name-${idx + 1}`}
+                    required
+                  />
+                  <label htmlFor={amountId}>{`Amount #${idx + 1}`}</label>
+                  <input
+                    type="text"
+                    onChange={this.handleChange}
+                    name={`ingredient-amount-${idx + 1}`}
+                    required
+                  />
+                </section>
               );
             })}
           </fieldset>
         </fieldset>
-        <input type="submit" value="Submit!" />
+        <input type="submit" value="Submit!" className="recipe-submit-button" />
       </form>
     );
   }
