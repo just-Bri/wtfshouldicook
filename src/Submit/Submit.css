@@ -51,6 +51,9 @@
 .hardware-input-container input,
 .ingredients-fieldset,
 .hardware-fieldset,
-.recipe-submit-button {
+.recipe-submit-button,
+.instructions-fieldset,
+.instructions-fieldset legend,
+.instructions-fieldset button {
   margin-bottom: 0.5rem;
 }

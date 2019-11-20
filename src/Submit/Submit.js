@@ -9,7 +9,8 @@ export default class Submit extends Component {
       pictureUrl: "",
       prepTime: "",
       cookTime: "",
-      ingredients: []
+      ingredients: [],
+      instructions: []
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -23,11 +24,15 @@ export default class Submit extends Component {
       ingredients: [...this.state.ingredients, { name: "", amount: "" }]
     });
   };
-  handleSubmit = e => {
-    e.preventDefault();
-    this.state.ingredients.length < 2
-      ? alert("please add some ing")
-      : console.log(this.state, "recipe submitted!");
+  addInstructionField = () => {
+    this.setState({
+      instructions: [...this.state.instructions, { step: "" }]
+    });
+  };
+  handleInstrChange = e => {
+    let instrc = this.state.instructions;
+    instrc[e.target.name].step = e.target.value;
+    this.setState({ instructions: instrc });
   };
 
   handleIngChange = e => {
@@ -40,8 +45,16 @@ export default class Submit extends Component {
     this.setState({ ingredients: ings });
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+    this.state.ingredients.length < 2
+      ? alert("please add some ing")
+      : console.log(this.state, "recipe submitted!");
+    // call a POST to api!
+  };
+
   render() {
-    let { ingredients } = this.state;
+    let { ingredients, instructions } = this.state;
     return (
       <form className="submit-form" onSubmit={this.handleSubmit}>
         <fieldset className="submit-fieldset">
@@ -111,6 +124,30 @@ export default class Submit extends Component {
                     type="text"
                     name={`${idx}`}
                     onChange={e => this.handleIngChange(e)}
+                    required
+                  />
+                </section>
+              );
+            })}
+          </fieldset>
+          <fieldset className="instructions-fieldset">
+            <legend>Instructions</legend>
+            <button onClick={this.addInstructionField}>
+              Add Instruction Step
+            </button>
+            {instructions.map((val, idx) => {
+              let instrcId = `ing-${idx}`;
+              return (
+                <section key={idx} className="instructions-input-container">
+                  <label
+                    htmlFor={instrcId}
+                    className="instructions-name-label"
+                  >{`Instructions #${idx + 1}`}</label>
+                  <input
+                    className="instructions-name"
+                    type="text"
+                    name={`${idx}`}
+                    onChange={e => this.handleInstrChange(e)}
                     required
                   />
                 </section>
