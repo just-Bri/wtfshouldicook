@@ -9,7 +9,8 @@ export default class Recipe extends Component {
         {this.context.recipeToDisplay}
         <h3>$Recipe Name</h3>
         <p>maybe a picture</p>
-        {/* Refactor this to come fro */}
+        {/* Refactor this to come from 
+        API based on question answers */}
         <h3>Ingredients</h3>
         <ul className="ingredients-list">
           <li className="ingredient">$one</li>
