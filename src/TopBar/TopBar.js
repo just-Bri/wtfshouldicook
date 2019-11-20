@@ -7,8 +7,10 @@ export default class TopBar extends Component {
   render() {
     return (
       <section className="top-bar">
-        <a href="/">Start</a>
-        {this.context.loggedIn ? (
+        <a href="/">Get a Recipe!</a>
+        <a href="/submit">Submit a Recipe!</a>
+        {/* The below will be added once user accounts are implimented */}
+        {/* {this.context.loggedIn ? (
           <>
             <a href="/account" className="top-account-button">
               Account
@@ -20,7 +22,6 @@ export default class TopBar extends Component {
             >
               Logout
             </a>
-            {/* function to logout */}
           </>
         ) : (
           <a
@@ -30,7 +31,7 @@ export default class TopBar extends Component {
           >
             Login
           </a>
-        )}
+        )} */}
       </section>
     );
   }
