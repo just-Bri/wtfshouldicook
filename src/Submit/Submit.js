@@ -29,6 +29,17 @@ export default class Submit extends Component {
       ? alert("please add some ing")
       : console.log(this.state, "recipe submitted!");
   };
+
+  handleIngChange = e => {
+    let ings = this.state.ingredients;
+    if (e.target.className === "ingredient-name") {
+      ings[e.target.name].name = e.target.value;
+    } else if (e.target.className === "ingredient-amount") {
+      ings[e.target.name].amount = e.target.value;
+    }
+    this.setState({ ingredients: ings });
+  };
+
   render() {
     let { ingredients } = this.state;
     return (
@@ -88,16 +99,18 @@ export default class Submit extends Component {
                     className="ingredient-name-label"
                   >{`Ingredient #${idx + 1}`}</label>
                   <input
+                    className="ingredient-name"
                     type="text"
-                    onChange={this.handleChange}
-                    name={`ingredient-name-${idx + 1}`}
+                    name={`${idx}`}
+                    onChange={e => this.handleIngChange(e)}
                     required
                   />
                   <label htmlFor={amountId}>{`Amount #${idx + 1}`}</label>
                   <input
+                    className="ingredient-amount"
                     type="text"
-                    onChange={this.handleChange}
-                    name={`ingredient-amount-${idx + 1}`}
+                    name={`${idx}`}
+                    onChange={e => this.handleIngChange(e)}
                     required
                   />
                 </section>
