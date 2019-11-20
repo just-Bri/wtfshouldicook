@@ -41,6 +41,13 @@
   justify-content: center;
   max-width: 15rem;
 }
+.instructions-input-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 15rem;
+}
 .ingredients-fieldset legend,
 .hardware-fieldset legend,
 .ingredients-fieldset button,
@@ -54,6 +61,8 @@
 .recipe-submit-button,
 .instructions-fieldset,
 .instructions-fieldset legend,
-.instructions-fieldset button {
+.instructions-fieldset button,
+.instructions-name-label,
+.instructions-name {
   margin-bottom: 0.5rem;
 }

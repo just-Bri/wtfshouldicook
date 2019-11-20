@@ -132,9 +132,7 @@ export default class Submit extends Component {
           </fieldset>
           <fieldset className="instructions-fieldset">
             <legend>Instructions</legend>
-            <button onClick={this.addInstructionField}>
-              Add Instruction Step
-            </button>
+            <button onClick={this.addInstructionField}>Add Instructions</button>
             {instructions.map((val, idx) => {
               let instrcId = `ing-${idx}`;
               return (
@@ -142,10 +140,9 @@ export default class Submit extends Component {
                   <label
                     htmlFor={instrcId}
                     className="instructions-name-label"
-                  >{`Instructions #${idx + 1}`}</label>
-                  <input
+                  >{`Step #${idx + 1}`}</label>
+                  <textarea
                     className="instructions-name"
-                    type="text"
                     name={`${idx}`}
                     onChange={e => this.handleInstrChange(e)}
                     required
