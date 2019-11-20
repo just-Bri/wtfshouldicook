@@ -101,7 +101,7 @@ export default class Submit extends Component {
           </fieldset>
           <fieldset className="ingredients-fieldset">
             <legend>Ingredients</legend>
-            <button onClick={this.addIngredientField}>Add ingredient</button>
+            <button onClick={this.addIngredientField}>Add Ingredient</button>
             {ingredients.map((val, idx) => {
               let ingId = `ing-${idx}`,
                 amountId = `amount-${idx}`;
@@ -132,7 +132,7 @@ export default class Submit extends Component {
           </fieldset>
           <fieldset className="instructions-fieldset">
             <legend>Instructions</legend>
-            <button onClick={this.addInstructionField}>Add Instructions</button>
+            <button onClick={this.addInstructionField}>Add Instruction</button>
             {instructions.map((val, idx) => {
               let instrcId = `ing-${idx}`;
               return (
