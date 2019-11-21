@@ -39,7 +39,7 @@ export default class Submit extends Component {
     let ings = [...this.state.ingredients];
     if (piece === "name") {
       ings[e.target.name].name = e.target.value;
-    } else if (piece === "ingredient-amount") {
+    } else if (piece === "amount") {
       ings[e.target.name].amount = e.target.value;
     }
     console.log(ings);
