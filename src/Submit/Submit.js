@@ -30,18 +30,19 @@ export default class Submit extends Component {
     });
   };
   handleInstrChange = e => {
-    let instrc = this.state.instructions;
+    let instrc = [...this.state.instructions];
     instrc[e.target.name].step = e.target.value;
     this.setState({ instructions: instrc });
   };
 
-  handleIngChange = e => {
-    let ings = this.state.ingredients;
-    if (e.target.className === "ingredient-name") {
+  handleIngChange = (e, piece) => {
+    let ings = [...this.state.ingredients];
+    if (piece === "name") {
       ings[e.target.name].name = e.target.value;
-    } else if (e.target.className === "ingredient-amount") {
+    } else if (piece === "ingredient-amount") {
       ings[e.target.name].amount = e.target.value;
     }
+    console.log(ings);
     this.setState({ ingredients: ings });
   };
 
@@ -51,10 +52,12 @@ export default class Submit extends Component {
       ? alert("please add some ing")
       : console.log(this.state, "recipe submitted!");
     // call a POST to api!
+    // need to setup api first!
   };
 
   render() {
     let { ingredients, instructions } = this.state;
+    console.log(ingredients);
     return (
       <form className="submit-form" onSubmit={this.handleSubmit}>
         <fieldset className="submit-fieldset">
@@ -98,6 +101,16 @@ export default class Submit extends Component {
                 required
               />
             </section>
+            <section className="complexity-container">
+              <label>Complexity</label>
+              <select>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </section>
           </fieldset>
           <fieldset className="ingredients-fieldset">
             <legend>Ingredients</legend>
@@ -115,7 +128,7 @@ export default class Submit extends Component {
                     className="ingredient-name"
                     type="text"
                     name={`${idx}`}
-                    onChange={e => this.handleIngChange(e)}
+                    onChange={e => this.handleIngChange(e, "name")}
                     required
                   />
                   <label htmlFor={amountId}>{`Amount #${idx + 1}`}</label>
@@ -123,7 +136,7 @@ export default class Submit extends Component {
                     className="ingredient-amount"
                     type="text"
                     name={`${idx}`}
-                    onChange={e => this.handleIngChange(e)}
+                    onChange={e => this.handleIngChange(e, "amount")}
                     required
                   />
                 </section>

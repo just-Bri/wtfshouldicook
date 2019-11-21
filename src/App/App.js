@@ -21,6 +21,8 @@ export default class App extends Component {
     };
   }
 
+  // Need to setup api and routes for get/post etc
+
   logIn = e => {
     e.preventDefault();
     this.setState({

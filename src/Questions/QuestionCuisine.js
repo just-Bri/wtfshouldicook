@@ -9,7 +9,7 @@ export default class QuestionCuisine extends Component {
       <section className="cuisine-options-container">
         <label className="cuisine-header header">What sounds good?</label>
         <ul className="cuisine-options-list option-list">
-          {/* S FIX */}
+          {/* FIX */}
           {/* Refactor this to a function that pulls
               cuisine options from the database */}
           <li className="cuisine-option">
@@ -78,7 +78,7 @@ export default class QuestionCuisine extends Component {
               Mexican
             </Link>
           </li>
-          {/* E FIX */}
+          {/* FIX */}
         </ul>
       </section>
     );

@@ -4,6 +4,7 @@
   src: local("Cascadia"),
     url(./fonts/CascadiaCode-Regular-VTT.ttf) format("truetype");
 }
+/* I just really like this font! */
 
 body {
   font-family: Cascadia;
