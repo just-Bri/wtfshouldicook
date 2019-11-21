@@ -5,26 +5,42 @@ import config from "../config";
 export default class SpecRecipe extends Component {
   static contextType = AppContext;
   state = {
-    recipe: []
+    recipeDetails: [],
+    recipeIngredients: []
   };
 
-  componentDidMount() {
+  getRecipeDetails = new Promise(() => {
     fetch(`${config.API_ENDPOINT}/api/recipe/${this.props.recipeId}`)
       .then(response => {
         return response.json();
       })
       .then(recipe => {
-        this.setState({ recipe: recipe });
+        this.setState({ recipeDetails: recipe });
+      });
+  });
+  getRecipeIngredients = new Promise(() => {
+    fetch(`${config.API_ENDPOINT}/api/ingredient/${this.props.recipeId}`)
+      .then(response => {
+        return response.json();
       })
-      .catch(e => console.log(e));
+      .then(ingredients => {
+        this.setState({ recipeIngredients: ingredients });
+      });
+  });
+  getRecipeIngredientAmounts = new Promise(() => {});
+
+  componentDidMount() {
+    Promise.all([this.getRecipeDetails, this.getRecipeIngredients]).catch(e =>
+      console.log(e)
+    );
   }
 
   render() {
-    // console.log(this.state);
+    console.log(this.state);
     return (
       <section>
-        {this.state.recipe.map((item, i) => {
-          console.log(item);
+        {this.state.recipeDetails.map((item, i) => {
+          // console.log(item);
           return (
             <ul key={i}>
               <li>Name: {item.name}</li>
