@@ -66,3 +66,15 @@
 .instructions-name {
   margin-bottom: 0.5rem;
 }
+
+@media screen and (max-width: 450px) {
+  .details-fieldset section {
+    display: flex;
+    flex-direction: column;
+  }
+  .details-fieldset section input,
+  .details-fieldset section select {
+    margin: 0 auto;
+    max-width: 70%;
+  }
+}

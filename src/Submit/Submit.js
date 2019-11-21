@@ -91,6 +91,16 @@ export default class Submit extends Component {
                 required
               />
             </section>
+            <section className="cuisine-container">
+              <label>Cuisine</label>
+              <input
+                type="text"
+                onChange={this.handleChange}
+                name="cuisine"
+                placeholder="Mexican, Italian etc..."
+                required
+              />
+            </section>
             <section className="cook-container">
               <label>Cook Time</label>
               <input

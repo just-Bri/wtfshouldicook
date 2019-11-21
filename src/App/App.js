@@ -6,6 +6,7 @@ import OpeningQuestion from "../Questions/QuestionOpening";
 import QuestionCuisine from "../Questions/QuestionCuisine";
 import QuestionComplexity from "../Questions/QuestionComplexity";
 import Recipe from "../Recipe/Recipe";
+import SpecRecipe from "../Recipe/SpecRecipe";
 import TopBar from "../TopBar/TopBar";
 import Submit from "../Submit/Submit";
 
@@ -97,12 +98,15 @@ export default class App extends Component {
                   <QuestionComplexity />
                 )}
               </Route>
-              <Route exact path="/recipe">
+              <Route exact path="/recipe/">
                 {this.state.complexity === "" ? (
                   <OpeningQuestion />
                 ) : (
                   <Recipe />
                 )}
+              </Route>
+              <Route exact path="/recipes/:id">
+                <SpecRecipe recipeId={1} />
               </Route>
               <Route exact path="/submit">
                 <Submit />
