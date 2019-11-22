@@ -3,7 +3,7 @@ import config from "../config";
 const WtfApiService = {
   submitRecipe(newRecipe) {
     console.log(newRecipe);
-    return fetch(`${config.API_ENDPOINT}/recipes`, {
+    return fetch(`${config.API_ENDPOINT}/api/recipes`, {
       method: "POST",
       headers: {
         "content-type": "application/json"
