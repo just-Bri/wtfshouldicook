@@ -12,7 +12,7 @@ class Submit extends Component {
     super(props);
     this.state = {
       name: "",
-      pictureUrl: "",
+      picture_url: "",
       prepTime: "",
       cookTime: "",
       ingredients: [],
@@ -87,8 +87,8 @@ class Submit extends Component {
               <input
                 type="text"
                 onChange={this.handleChange}
-                name="pictureUrl"
-                value={this.state.pictureUrl}
+                name="picture_url"
+                value={this.state.picture_url}
               />
             </section>
             <section className="prep-container">
