@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./Submit.css";
-import config from "../config";
+// import config from "../config";
 import WtfApiService from "../Api/api-service";
 
 import AppContext from "../App/AppContext";
