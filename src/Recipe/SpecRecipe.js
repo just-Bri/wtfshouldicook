@@ -6,7 +6,8 @@ export default class SpecRecipe extends Component {
   static contextType = AppContext;
   state = {
     recipeDetails: [],
-    recipeIngredients: []
+    recipeIngredients: [],
+    recipeInstructions: []
   };
 
   getRecipeDetails = new Promise(() => {
@@ -27,12 +28,22 @@ export default class SpecRecipe extends Component {
         this.setState({ recipeIngredients: ingredients });
       });
   });
-  getRecipeIngredientAmounts = new Promise(() => {});
+  getRecipeInstructions = new Promise(() => {
+    fetch(`${config.API_ENDPOINT}/api/instructions/${this.props.recipeId}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(instructions => {
+        this.setState({ recipeInstructions: instructions });
+      });
+  });
 
   componentDidMount() {
-    Promise.all([this.getRecipeDetails, this.getRecipeIngredients]).catch(e =>
-      console.log(e)
-    );
+    Promise.all([
+      this.getRecipeDetails,
+      this.getRecipeIngredients,
+      this.getRecipeInstructions
+    ]).catch(e => console.log(e));
   }
 
   render() {
