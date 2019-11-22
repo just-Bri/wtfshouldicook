@@ -9,6 +9,8 @@ import Recipe from "../Recipe/Recipe";
 import SpecRecipe from "../Recipe/SpecRecipe";
 import TopBar from "../TopBar/TopBar";
 import Submit from "../Submit/Submit";
+// import WtfApiService from "../Api/api-service";
+import "../config";
 
 export default class App extends Component {
   constructor() {
@@ -18,22 +20,11 @@ export default class App extends Component {
       cuisine: "",
       complexity: "",
       recipe: "will come from the api",
-      loggedIn: false
+      loggedIn: false,
+      newRecipe: null
     };
   }
-  // user accounts on back burner for now
-  // logIn = e => {
-  //   e.preventDefault();
-  //   this.setState({
-  //     loggedIn: true
-  //   });
-  // };
-  // logOut = e => {
-  //   e.preventDefault();
-  //   this.setState({
-  //     loggedIn: false
-  //   });
-  // };
+
   updateCraving = craving => {
     console.log("this.state.craving is being set to: " + craving);
     this.setState({
@@ -56,10 +47,6 @@ export default class App extends Component {
   getRecipe = () => {
     // GET using this.state
     console.log("getRecipe called");
-  };
-  SubmitRecipe = newRecipe => {
-    // POST using newRecipe
-    console.log(newRecipe);
   };
 
   render() {

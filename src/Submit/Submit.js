@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./Submit.css";
+import config from "../config";
+import WtfApiService from "../Api/api-service";
 
 import AppContext from "../App/AppContext";
 
@@ -51,8 +53,7 @@ class Submit extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.context.SubmitRecipe(this.state);
-    this.props.history.push(`/`);
+    WtfApiService.submitRecipe(this.state).then(this.props.history.push(`/`));
   };
 
   render() {
