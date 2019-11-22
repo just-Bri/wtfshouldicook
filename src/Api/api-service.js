@@ -2,19 +2,19 @@ import config from "../config";
 
 const WtfApiService = {
   submitRecipe(newRecipe) {
-    console.log(newRecipe);
-    return fetch(`${config.API_ENDPOINT}/api/recipe`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-        // authorization: not used for now
-      },
-      body: JSON.stringify({
-        newRecipe
-      })
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-    );
+    // console.log(JSON.stringify(newRecipe));
+    try {
+      return fetch(`${config.API_ENDPOINT}/api/recipe`, {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newRecipe)
+      }).then(res => console.log(res.json()));
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 

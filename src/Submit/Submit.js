@@ -13,8 +13,8 @@ class Submit extends Component {
     this.state = {
       name: "",
       picture_url: "",
-      prepTime: "",
-      cookTime: "",
+      prep_time: "",
+      cook_time: "",
       ingredients: [],
       instructions: []
     };
@@ -53,9 +53,9 @@ class Submit extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    WtfApiService.submitRecipe(this.state)
-      .then(this.props.history.push(`/`))
-      .catch(e => console.log(e));
+    WtfApiService.submitRecipe(this.state);
+    // .then(this.props.history.push(`/`))
+    // .catch(e => console.log(e));
   };
 
   render() {
@@ -98,7 +98,7 @@ class Submit extends Component {
               <input
                 type="number"
                 onChange={this.handleChange}
-                name="prepTime"
+                name="prep_time"
                 placeholder="in minutes"
                 required
               />
@@ -108,7 +108,7 @@ class Submit extends Component {
               <input
                 type="number"
                 onChange={this.handleChange}
-                name="cookTime"
+                name="cook_time"
                 placeholder="in minutes"
                 required
               />
