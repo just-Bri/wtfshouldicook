@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./Submit.css";
 
-export default class Submit extends Component {
+import AppContext from "../App/AppContext";
+
+class Submit extends Component {
+  static contextType = AppContext;
   constructor(props) {
     super(props);
     this.state = {
@@ -42,24 +46,19 @@ export default class Submit extends Component {
     } else if (piece === "amount") {
       ings[e.target.name].amount = e.target.value;
     }
-    console.log(ings);
     this.setState({ ingredients: ings });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.state.ingredients.length < 2
-      ? alert("please add some ing")
-      : console.log(this.state, "recipe submitted!");
-    // call a POST to api!
-    // need to setup api first!
+    this.context.SubmitRecipe(this.state);
+    this.props.history.push(`/`);
   };
 
   render() {
     let { ingredients, instructions } = this.state;
-    console.log(ingredients);
     return (
-      <form className="submit-form" onSubmit={this.handleSubmit}>
+      <form className="submit-form" onSubmit={this.handleSubmit.bind(this)}>
         <fieldset className="submit-fieldset">
           <legend className="main-legend">Submit a new recipe!</legend>
           <fieldset className="details-fieldset">
@@ -69,6 +68,16 @@ export default class Submit extends Component {
                 type="text"
                 onChange={this.handleChange}
                 name="name"
+                required
+              />
+            </section>
+            <section className="cuisine-container">
+              <label>Cuisine</label>
+              <input
+                type="text"
+                onChange={this.handleChange}
+                name="cuisine"
+                placeholder="Mexican, Italian etc..."
                 required
               />
             </section>
@@ -91,16 +100,6 @@ export default class Submit extends Component {
                 required
               />
             </section>
-            <section className="cuisine-container">
-              <label>Cuisine</label>
-              <input
-                type="text"
-                onChange={this.handleChange}
-                name="cuisine"
-                placeholder="Mexican, Italian etc..."
-                required
-              />
-            </section>
             <section className="cook-container">
               <label>Cook Time</label>
               <input
@@ -111,6 +110,7 @@ export default class Submit extends Component {
                 required
               />
             </section>
+
             <section className="complexity-container">
               <label>Complexity</label>
               <select>
@@ -175,8 +175,12 @@ export default class Submit extends Component {
             })}
           </fieldset>
         </fieldset>
-        <input type="submit" value="Submit!" className="recipe-submit-button" />
+        <button type="submit" className="recipe-submit-button">
+          Submit!
+        </button>
       </form>
     );
   }
 }
+
+export default withRouter(Submit);

@@ -63,6 +63,9 @@ export default class App extends Component {
       complexity: complexity
     });
   };
+  SubmitRecipe = recipe => {
+    console.log(recipe);
+  };
 
   render() {
     return (
@@ -72,6 +75,7 @@ export default class App extends Component {
             updateCraving: this.updateCraving,
             updateCuisine: this.updateCuisine,
             updateComplexity: this.updateComplexity,
+            SubmitRecipe: this.SubmitRecipe,
             recipeToDisplay: this.state.recipe,
             loggedIn: this.state.loggedIn,
             logIn: this.logIn,
