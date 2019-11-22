@@ -29,7 +29,7 @@ export default class SpecRecipe extends Component {
       });
   });
   getRecipeInstructions = new Promise(() => {
-    fetch(`${config.API_ENDPOINT}/api/instructions/${this.props.recipeId}`)
+    fetch(`${config.API_ENDPOINT}/api/instruction/${this.props.recipeId}`)
       .then(response => {
         return response.json();
       })
