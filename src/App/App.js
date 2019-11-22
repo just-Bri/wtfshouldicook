@@ -21,50 +21,45 @@ export default class App extends Component {
       loggedIn: false
     };
   }
-
-  // Need to setup api and routes for get/post etc
-
-  logIn = e => {
-    e.preventDefault();
-    this.setState({
-      loggedIn: true
-    });
-  };
-
-  logOut = e => {
-    e.preventDefault();
-    this.setState({
-      loggedIn: false
-    });
-  };
-
+  // user accounts on back burner for now
+  // logIn = e => {
+  //   e.preventDefault();
+  //   this.setState({
+  //     loggedIn: true
+  //   });
+  // };
+  // logOut = e => {
+  //   e.preventDefault();
+  //   this.setState({
+  //     loggedIn: false
+  //   });
+  // };
   updateCraving = craving => {
     console.log("this.state.craving is being set to: " + craving);
     this.setState({
       craving: craving
     });
   };
-
   updateCuisine = cuisine => {
     console.log("this.state.cuisine is being set to: " + cuisine);
     this.setState({
       cuisine: cuisine
     });
   };
-
-  getRecipe = () => {
-    // fetch using this.state.cuisine && this.state.complexity
-    console.log("getRecipe called");
-  };
-
   updateComplexity = complexity => {
     console.log("this.state.complexity is being set to: " + complexity);
     this.setState({
       complexity: complexity
     });
   };
-  SubmitRecipe = recipe => {
-    console.log(recipe);
+  // Need to setup api and routes for get/post etc
+  getRecipe = () => {
+    // GET using this.state
+    console.log("getRecipe called");
+  };
+  SubmitRecipe = newRecipe => {
+    // POST using newRecipe
+    console.log(newRecipe);
   };
 
   render() {

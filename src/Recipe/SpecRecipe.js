@@ -62,6 +62,26 @@ export default class SpecRecipe extends Component {
             </ul>
           );
         })}
+        <h3>Ingredients</h3>
+        <ul>
+          {this.state.recipeIngredients.map((item, i) => {
+            return (
+              <li key={i}>
+                {i + 1}: {item.name}, {item.amount}
+              </li>
+            );
+          })}
+        </ul>
+        <h3>Instructions</h3>
+        <ul>
+          {this.state.recipeInstructions.map((item, i) => {
+            return (
+              <li key={i}>
+                Step {i + 1}: {item.instructions}
+              </li>
+            );
+          })}
+        </ul>
       </section>
     );
   }
