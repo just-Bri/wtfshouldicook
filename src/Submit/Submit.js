@@ -53,7 +53,9 @@ class Submit extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    WtfApiService.submitRecipe(this.state).then(this.props.history.push(`/`));
+    WtfApiService.submitRecipe(this.state)
+      .then(this.props.history.push(`/`))
+      .catch(e => console.log(e));
   };
 
   render() {
