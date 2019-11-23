@@ -12,17 +12,26 @@ class Submit extends Component {
     super(props);
     this.state = {
       name: "",
-      picture_url: "",
+      // picture_url: "",
       prep_time: "",
       cook_time: "",
+      cuisine: "",
+      complexity: 1,
       ingredients: [],
       instructions: []
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleIngChange = this.handleIngChange.bind(this);
+    this.handleInstrChange = this.handleInstrChange.bind(this);
+    this.handleNumberChange = this.handleNumberChange.bind(this);
   }
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  handleNumberChange(e) {
+    this.setState({ [e.target.name]: parseInt(e.target.value, 10) });
   }
 
   addIngredientField = () => {
@@ -53,6 +62,7 @@ class Submit extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.state);
     ApiService.submitRecipe(this.state);
     // .then(this.props.history.push(`/`))
     // .catch(e => console.log(e));
@@ -84,7 +94,7 @@ class Submit extends Component {
                 required
               />
             </section>
-            <section className="url-container">
+            {/* <section className="url-container">
               <label>Picture Url</label>
               <input
                 type="text"
@@ -92,12 +102,12 @@ class Submit extends Component {
                 name="picture_url"
                 value={this.state.picture_url}
               />
-            </section>
+            </section> */}
             <section className="prep-container">
               <label>Prep Time</label>
               <input
                 type="number"
-                onChange={this.handleChange}
+                onChange={this.handleNumberChange}
                 name="prep_time"
                 placeholder="in minutes"
                 required
@@ -107,7 +117,7 @@ class Submit extends Component {
               <label>Cook Time</label>
               <input
                 type="number"
-                onChange={this.handleChange}
+                onChange={this.handleNumberChange}
                 name="cook_time"
                 placeholder="in minutes"
                 required
@@ -116,7 +126,7 @@ class Submit extends Component {
 
             <section className="complexity-container">
               <label>Complexity</label>
-              <select>
+              <select name="complexity" onChange={this.handleCompChange}>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
