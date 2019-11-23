@@ -1,6 +1,6 @@
 import config from "../config";
 
-const WtfApiService = {
+const ApiService = {
   submitRecipe(newRecipe) {
     try {
       return fetch(`${config.API_ENDPOINT}/api/recipe`, {
@@ -17,4 +17,4 @@ const WtfApiService = {
   }
 };
 
-export default WtfApiService;
+export default ApiService;
