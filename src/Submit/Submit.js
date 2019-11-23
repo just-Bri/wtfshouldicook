@@ -41,12 +41,16 @@ class Submit extends Component {
   };
   addInstructionField = () => {
     this.setState({
-      instructions: [...this.state.instructions, { step: "" }]
+      instructions: [
+        ...this.state.instructions,
+        { step_number: 0, instructions: "" }
+      ]
     });
   };
   handleInstrChange = e => {
     let instrc = [...this.state.instructions];
-    instrc[e.target.name].step = e.target.value;
+    instrc[e.target.name].instructions = e.target.value;
+    instrc[e.target.name].step_number = parseInt(e.target.name, 10);
     this.setState({ instructions: instrc });
   };
 
