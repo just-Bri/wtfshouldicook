@@ -47,7 +47,7 @@ export default class SpecRecipe extends Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <section>
         {this.state.recipeDetails.map((item, i) => {

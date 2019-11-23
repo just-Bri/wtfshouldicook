@@ -2,7 +2,6 @@ import config from "../config";
 
 const WtfApiService = {
   submitRecipe(newRecipe) {
-    // console.log(JSON.stringify(newRecipe));
     try {
       return fetch(`${config.API_ENDPOINT}/api/recipe`, {
         method: "post",

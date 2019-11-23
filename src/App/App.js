@@ -9,7 +9,6 @@ import Recipe from "../Recipe/Recipe";
 import SpecRecipe from "../Recipe/SpecRecipe";
 import TopBar from "../TopBar/TopBar";
 import Submit from "../Submit/Submit";
-// import WtfApiService from "../Api/api-service";
 import "../config";
 
 export default class App extends Component {
@@ -58,10 +57,11 @@ export default class App extends Component {
             updateCuisine: this.updateCuisine,
             updateComplexity: this.updateComplexity,
             SubmitRecipe: this.SubmitRecipe,
-            recipeToDisplay: this.state.recipe,
-            loggedIn: this.state.loggedIn,
-            logIn: this.logIn,
-            logOut: this.ogOut
+            recipeToDisplay: this.state.recipe
+            // on hold
+            // loggedIn: this.state.loggedIn,
+            // logIn: this.logIn,
+            // logOut: this.ogOut
           }}
         >
           <TopBar />
