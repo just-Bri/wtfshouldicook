@@ -11,7 +11,6 @@ export default class SpecRecipe extends Component {
   };
 
   getRecipeDetails = new Promise(() => {
-    // console.log(this.props.recipeId);
     fetch(`${config.API_ENDPOINT}/api/recipe/${this.props.match.params.id}`)
       .then(response => {
         return response.json();
@@ -42,17 +41,16 @@ export default class SpecRecipe extends Component {
   });
 
   componentDidMount() {
-    // const { rec_id } = this.props.match.params;
     Promise.all([
       this.getRecipeDetails,
       this.getRecipeIngredients,
       this.getRecipeInstructions
-    ]).catch(e => console.log(e));
+    ])
+      .then(res => console.log("Promise.all", res))
+      .catch(e => console.log("Promise.all e", e));
   }
 
   render() {
-    // console.log(this.state);
-    // console.log(this.props.match.params.id);
     return (
       <section>
         {this.state.recipeDetails.map((item, i) => {
