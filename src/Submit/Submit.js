@@ -15,7 +15,7 @@ class Submit extends Component {
       // picture_url: "",
       prep_time: "",
       cook_time: "",
-      cuisine: "",
+      cuisine: "british",
       complexity: 1,
       ingredients: [],
       instructions: []
@@ -62,8 +62,14 @@ class Submit extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
-    ApiService.submitRecipe(this.state);
+    // console.log(this.state);
+    if (this.state.ingredients.length < 2) {
+      alert("Please add more ingredients");
+    } else if (this.state.instructions.length < 2) {
+      alert("Please add more instructions");
+    } else {
+      ApiService.submitRecipe(this.state);
+    }
     // .then(this.props.history.push(`/`))
     // .catch(e => console.log(e));
   };
@@ -85,14 +91,23 @@ class Submit extends Component {
               />
             </section>
             <section className="cuisine-container">
-              <label>Cuisine</label>
+              {/* <label>Cuisine</label>
               <input
                 type="text"
                 onChange={this.handleChange}
                 name="cuisine"
                 placeholder="Mexican, Italian etc..."
                 required
-              />
+              /> */}
+              <label>Cuisine</label>
+              <select name="cuisine" onChange={this.handleChange}>
+                <option value="british">British</option>
+                <option value="chinese">Chinese</option>
+                <option value="french">French</option>
+                <option value="indian">Indian</option>
+                <option value="italian">Italian</option>
+                <option value="mexican">Mexican</option>
+              </select>
             </section>
             {/* <section className="url-container">
               <label>Picture Url</label>
