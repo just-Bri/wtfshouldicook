@@ -11,7 +11,8 @@ export default class SpecRecipe extends Component {
   };
 
   getRecipeDetails = new Promise(() => {
-    fetch(`${config.API_ENDPOINT}/api/recipe/${this.props.recipeId}`)
+    // console.log(this.props.recipeId);
+    fetch(`${config.API_ENDPOINT}/api/recipe/${this.props.match.params.id}`)
       .then(response => {
         return response.json();
       })
@@ -20,16 +21,18 @@ export default class SpecRecipe extends Component {
       });
   });
   getRecipeIngredients = new Promise(() => {
-    fetch(`${config.API_ENDPOINT}/api/ingredient/${this.props.recipeId}`)
+    fetch(`${config.API_ENDPOINT}/api/ingredient/${this.props.match.params.id}`)
       .then(response => {
-        return response.json();
+        return response;
       })
       .then(ingredients => {
         this.setState({ recipeIngredients: ingredients });
       });
   });
   getRecipeInstructions = new Promise(() => {
-    fetch(`${config.API_ENDPOINT}/api/instruction/${this.props.recipeId}`)
+    fetch(
+      `${config.API_ENDPOINT}/api/instruction/${this.props.match.params.id}`
+    )
       .then(response => {
         return response.json();
       })
@@ -39,6 +42,7 @@ export default class SpecRecipe extends Component {
   });
 
   componentDidMount() {
+    // const { rec_id } = this.props.match.params;
     Promise.all([
       this.getRecipeDetails,
       this.getRecipeIngredients,
@@ -48,6 +52,7 @@ export default class SpecRecipe extends Component {
 
   render() {
     // console.log(this.state);
+    console.log(this.props.match.params.id);
     return (
       <section>
         {this.state.recipeDetails.map((item, i) => {
@@ -63,7 +68,8 @@ export default class SpecRecipe extends Component {
           );
         })}
         <h3>Ingredients</h3>
-        <ul>
+        <p>commented out because of .map error</p>
+        {/* <ul>
           {this.state.recipeIngredients.map((item, i) => {
             return (
               <li key={i}>
@@ -71,7 +77,7 @@ export default class SpecRecipe extends Component {
               </li>
             );
           })}
-        </ul>
+        </ul> */}
         <h3>Instructions</h3>
         <ul>
           {this.state.recipeInstructions.map((item, i) => {

@@ -91,9 +91,11 @@ export default class App extends Component {
                   <Recipe />
                 )}
               </Route>
-              <Route exact path="/recipes/:id">
-                <SpecRecipe recipeId={1} />
-              </Route>
+              <Route
+                exact
+                path="/recipes/:id"
+                render={props => <SpecRecipe {...props} />}
+              />
               <Route exact path="/submit">
                 <Submit />
               </Route>
