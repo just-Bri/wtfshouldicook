@@ -60,6 +60,10 @@ class Submit extends Component {
     this.setState({ ingredients: ings });
   };
 
+  updateSubmitted = id => {
+    console.log(`updating submittedRecipeId to ${id}`);
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     // console.log(this.state);
@@ -70,8 +74,6 @@ class Submit extends Component {
     } else {
       ApiService.submitRecipe(this.state);
     }
-    // .then(this.props.history.push(`/`))
-    // .catch(e => console.log(e));
   };
 
   render() {

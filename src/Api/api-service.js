@@ -10,8 +10,9 @@ const ApiService = {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(newRecipe)
-      });
-      // .then(res => console.log(res.json()));
+      }).then(res => {
+        return res;
+      }); //this is the submitted recipe's id
     } catch (error) {
       console.log(error);
     }

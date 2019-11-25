@@ -19,8 +19,7 @@ export default class App extends Component {
       cuisine: "",
       complexity: "",
       recipe: "will come from the api",
-      loggedIn: false,
-      newRecipe: null
+      loggedIn: false
     };
   }
 
@@ -56,7 +55,6 @@ export default class App extends Component {
             updateCraving: this.updateCraving,
             updateCuisine: this.updateCuisine,
             updateComplexity: this.updateComplexity,
-            SubmitRecipe: this.SubmitRecipe,
             recipeToDisplay: this.state.recipe
             // on hold
             // loggedIn: this.state.loggedIn,
