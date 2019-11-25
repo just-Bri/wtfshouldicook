@@ -9,10 +9,13 @@ const ApiService = {
           Accept: "application/json",
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(newRecipe)
-      }).then(res => {
-        return res;
-      }); //this is the submitted recipe's id
+        body: JSON.stringify(newRecipe),
+        redirect: "follow"
+      })
+        .then(response => response.json())
+        .then(response => {
+          window.location.href = `${response.redirectTo}`;
+        });
     } catch (error) {
       console.log(error);
     }

@@ -9,6 +9,7 @@ import Recipe from "../Recipe/Recipe";
 import SpecRecipe from "../Recipe/SpecRecipe";
 import TopBar from "../TopBar/TopBar";
 import Submit from "../Submit/Submit";
+// import ApiService from "../Api/api-service";
 import "../config";
 
 export default class App extends Component {
@@ -18,8 +19,8 @@ export default class App extends Component {
       craving: "",
       cuisine: "",
       complexity: "",
-      recipe: "will come from the api",
-      loggedIn: false
+      recipe: "will come from the api"
+      // loggedIn: false
     };
   }
 
@@ -41,9 +42,7 @@ export default class App extends Component {
       complexity: complexity
     });
   };
-  // Need to setup api and routes for get/post etc
   getRecipe = () => {
-    // GET using this.state
     console.log("getRecipe called");
   };
 
