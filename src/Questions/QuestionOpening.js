@@ -25,8 +25,8 @@ export default class QuestionOpening extends Component {
           </li>
           <li className="craving-option-container">
             <Link
-              className="link-to-complexity"
-              to="/complexity"
+              className="link-to-complex"
+              to="/complex"
               onClick={() => {
                 this.context.updateCraving("no");
               }}

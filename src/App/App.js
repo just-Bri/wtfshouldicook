@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import AppContext from "./AppContext";
 import OpeningQuestion from "../Questions/QuestionOpening";
 import QuestionCuisine from "../Questions/QuestionCuisine";
-import QuestionComplexity from "../Questions/QuestionComplexity";
+import QuestionComplex from "../Questions/QuestionComplex";
 import Recipe from "../Recipe/Recipe";
 import SpecRecipe from "../Recipe/SpecRecipe";
 import TopBar from "../TopBar/TopBar";
 import Submit from "../Submit/Submit";
-// import ApiService from "../Api/api-service";
+import ApiService from "../Api/api-service";
 import "../config";
 
 export default class App extends Component {
@@ -18,32 +18,32 @@ export default class App extends Component {
     this.state = {
       craving: "",
       cuisine: "",
-      complexity: "",
+      complex: "",
       recipe: "will come from the api"
       // loggedIn: false
     };
   }
 
   updateCraving = craving => {
-    console.log("this.state.craving is being set to: " + craving);
+    // console.log("this.state.craving is being set to: " + craving);
     this.setState({
       craving: craving
     });
   };
   updateCuisine = cuisine => {
-    console.log("this.state.cuisine is being set to: " + cuisine);
+    // console.log("this.state.cuisine is being set to: " + cuisine);
     this.setState({
       cuisine: cuisine
     });
   };
-  updateComplexity = complexity => {
-    console.log("this.state.complexity is being set to: " + complexity);
+  updateComplex = complex => {
+    // console.log("this.state.complex is being set to: " + complex);
     this.setState({
-      complexity: complexity
+      complex: complex
     });
   };
   getRecipe = () => {
-    console.log("getRecipe called");
+    ApiService.getRecipe(this.state);
   };
 
   render() {
@@ -53,8 +53,9 @@ export default class App extends Component {
           value={{
             updateCraving: this.updateCraving,
             updateCuisine: this.updateCuisine,
-            updateComplexity: this.updateComplexity,
-            recipeToDisplay: this.state.recipe
+            updateComplex: this.updateComplex,
+            recipeToDisplay: this.state.recipe,
+            getRecipe: this.getRecipe
             // on hold
             // loggedIn: this.state.loggedIn,
             // logIn: this.logIn,
@@ -74,19 +75,15 @@ export default class App extends Component {
                   <QuestionCuisine />
                 )}
               </Route>
-              <Route exact path="/complexity">
+              <Route exact path="/complex">
                 {this.state.craving === "" ? (
                   <OpeningQuestion />
                 ) : (
-                  <QuestionComplexity />
+                  <QuestionComplex />
                 )}
               </Route>
               <Route exact path="/recipe/">
-                {this.state.complexity === "" ? (
-                  <OpeningQuestion />
-                ) : (
-                  <Recipe />
-                )}
+                {this.state.complex === "" ? <OpeningQuestion /> : <Recipe />}
               </Route>
               <Route
                 exact

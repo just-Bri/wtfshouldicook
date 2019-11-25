@@ -15,7 +15,7 @@ export default class QuestionCuisine extends Component {
           <li className="cuisine-option">
             <Link
               className="cuisine-link"
-              to="/complexity"
+              to="/complex"
               onClick={() => {
                 this.context.updateCuisine("british");
               }}
@@ -26,7 +26,7 @@ export default class QuestionCuisine extends Component {
           <li className="cuisine-option">
             <Link
               className="cuisine-link"
-              to="/complexity"
+              to="/complex"
               onClick={() => {
                 this.context.updateCuisine("chinese");
               }}
@@ -37,7 +37,7 @@ export default class QuestionCuisine extends Component {
           <li className="cuisine-option">
             <Link
               className="cuisine-link"
-              to="/complexity"
+              to="/complex"
               onClick={() => {
                 this.context.updateCuisine("french");
               }}
@@ -48,7 +48,7 @@ export default class QuestionCuisine extends Component {
           <li className="cuisine-option">
             <Link
               className="cuisine-link"
-              to="/complexity"
+              to="/complex"
               onClick={() => {
                 this.context.updateCuisine("indian");
               }}
@@ -59,7 +59,7 @@ export default class QuestionCuisine extends Component {
           <li className="cuisine-option">
             <Link
               className="cuisine-link"
-              to="/complexity"
+              to="/complex"
               onClick={() => {
                 this.context.updateCuisine("italian");
               }}
@@ -70,7 +70,7 @@ export default class QuestionCuisine extends Component {
           <li className="cuisine-option">
             <Link
               className="cuisine-link"
-              to="/complexity"
+              to="/complex"
               onClick={() => {
                 this.context.updateCuisine("mexican");
               }}

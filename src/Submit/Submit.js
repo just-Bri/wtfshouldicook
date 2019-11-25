@@ -12,11 +12,10 @@ class Submit extends Component {
     super(props);
     this.state = {
       name: "",
-      // picture_url: "",
       prep_time: "",
       cook_time: "",
       cuisine: "british",
-      complexity: 1,
+      complex: "no",
       ingredients: [],
       instructions: []
     };
@@ -58,10 +57,6 @@ class Submit extends Component {
       ings[e.target.name].amount = e.target.value;
     }
     this.setState({ ingredients: ings });
-  };
-
-  updateSubmitted = id => {
-    console.log(`updating submittedRecipeId to ${id}`);
   };
 
   handleSubmit = e => {
@@ -141,14 +136,11 @@ class Submit extends Component {
               />
             </section>
 
-            <section className="complexity-container">
-              <label>Complexity</label>
-              <select name="complexity" onChange={this.handleCompChange}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+            <section className="complex-container">
+              <label>Complex?</label>
+              <select name="complex" onChange={this.handleChange}>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
               </select>
             </section>
           </fieldset>

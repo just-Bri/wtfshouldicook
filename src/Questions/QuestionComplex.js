@@ -2,32 +2,32 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AppContext from "../App/AppContext";
 
-export default class QuestionComplexity extends Component {
+export default class QuestionComplex extends Component {
   static contextType = AppContext;
   render() {
     return (
-      <section className="complexity-options-container">
+      <section className="complex-options-container">
         <label className="adventurous-header header">
           Feeling adventorous?
         </label>
-        <ul className="complexity-options-list option-list">
-          <li className="complexity-option">
+        <ul className="complex-options-list option-list">
+          <li className="complex-option">
             <Link
               className="link-to-recipe"
               to="/recipe"
               onClick={() => {
-                this.context.updateComplexity("yes");
+                this.context.updateComplex("yes");
               }}
             >
               Yes!
             </Link>
           </li>
-          <li className="complexity-option">
+          <li className="complex-option">
             <Link
               className="link-to-recipe"
               to="/recipe"
               onClick={() => {
-                this.context.updateComplexity("no");
+                this.context.updateComplex("no");
               }}
             >
               No.

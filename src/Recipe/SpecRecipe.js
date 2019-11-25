@@ -53,20 +53,20 @@ export default class SpecRecipe extends Component {
   render() {
     return (
       <section>
-        {this.state.recipeDetails.map((item, i) => {
-          // console.log(item);
-          return (
-            <ul key={i}>
-              <li>Name: {item.name}</li>
-              <li>Prep time: {item.prep_time}</li>
-              <li>Cook time: {item.cook_time}</li>
-              <li>Cuisine: {item.cuisine}</li>
-              <li>Complexity: {item.complexity}</li>
-            </ul>
-          );
-        })}
+        {this.state.recipeDetails.length === 0
+          ? null
+          : this.state.recipeDetails.map((item, i) => {
+              return (
+                <ul key={i}>
+                  <li>Name: {item.name}</li>
+                  <li>Prep time: {item.prep_time}</li>
+                  <li>Cook time: {item.cook_time}</li>
+                  <li>Cuisine: {item.cuisine}</li>
+                  <li>complex: {item.complex === false ? "nope" : "yep"}</li>
+                </ul>
+              );
+            })}
         <h3>Ingredients</h3>
-        {/* <p>commented out because of .map error</p> */}
         <ul>
           {this.state.recipeIngredients.map((item, i) => {
             return (
