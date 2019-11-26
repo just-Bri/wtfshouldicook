@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import AppContext from "../App/AppContext";
 
 export default class QuestionComplex extends Component {
@@ -12,26 +12,26 @@ export default class QuestionComplex extends Component {
         </label>
         <ul className="complex-options-list option-list">
           <li className="complex-option">
-            <Link
-              className="link-to-recipe"
-              to="/recipe"
+            <button
+              className="button-to-recipe"
+              // to="/recipe"
               onClick={() => {
                 this.context.updateComplex("yes");
               }}
             >
               Yes!
-            </Link>
+            </button>
           </li>
           <li className="complex-option">
-            <Link
-              className="link-to-recipe"
-              to="/recipe"
+            <button
+              className="button-to-recipe"
+              // to="/recipe"
               onClick={() => {
                 this.context.updateComplex("no");
               }}
             >
               No.
-            </Link>
+            </button>
           </li>
         </ul>
       </section>

@@ -6,7 +6,6 @@ import OpeningQuestion from "../Questions/QuestionOpening";
 import QuestionCuisine from "../Questions/QuestionCuisine";
 import QuestionComplex from "../Questions/QuestionComplex";
 import Recipe from "../Recipe/Recipe";
-import SpecRecipe from "../Recipe/SpecRecipe";
 import TopBar from "../TopBar/TopBar";
 import Submit from "../Submit/Submit";
 import ApiService from "../Api/api-service";
@@ -35,9 +34,12 @@ export default class App extends Component {
     });
   };
   updateComplex = complex => {
-    this.setState({
-      complex: complex
-    });
+    this.setState(
+      {
+        complex: complex
+      },
+      () => this.getRecipe()
+    );
   };
   getRecipe = () => {
     ApiService.getRecipe(this.state);
@@ -76,13 +78,10 @@ export default class App extends Component {
                     <QuestionComplex />
                   )}
                 </Route>
-                <Route exact path="/recipe/">
-                  {this.state.complex === "" ? <OpeningQuestion /> : <Recipe />}
-                </Route>
                 <Route
                   exact
                   path="/recipes/:id"
-                  render={props => <SpecRecipe {...props} />}
+                  render={props => <Recipe {...props} />}
                 />
                 <Route exact path="/submit">
                   <Submit />
