@@ -60,12 +60,16 @@ export default class SpecRecipe extends Component {
         </ul>
       </section>
     ) : (
-      <>
-        <h2>wtfdidyoudo?</h2>
-        <p> This recipe doesn't exist yet!</p>
-        <p>Please click on "Get a Recipe!"</p>
-        <p>or "Submit a Recipe!" up above</p>
-      </>
+      setTimeout(() => {
+        return (
+          <>
+            <h2>wtfdidyoudo?</h2>
+            <p> This recipe doesn't exist yet!</p>
+            <p>Please click on "Get a Recipe!"</p>
+            <p>or "Submit a Recipe!" up above</p>
+          </>
+        );
+      }, 3000)
     );
   }
 }
