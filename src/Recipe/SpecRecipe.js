@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AppContext from "../App/AppContext";
 import config from "../config";
+import "./SpecRecipe.css";
 
 export default class SpecRecipe extends Component {
   static contextType = AppContext;
@@ -52,40 +53,49 @@ export default class SpecRecipe extends Component {
 
   render() {
     return (
-      <section>
-        {this.state.recipeDetails.length === 0
-          ? null
-          : this.state.recipeDetails.map((item, i) => {
-              return (
-                <ul key={i}>
+      <section className="specific-container">
+        {this.state.recipeDetails.length === 0 ? (
+          <>
+            <h2>Uh oh</h2>
+            <p>There's no recipe here!</p>
+            <p>Please click 'Get a Recipe!'</p>
+            <p>or 'Submit a Recipe!' above!</p>
+          </>
+        ) : (
+          this.state.recipeDetails.map((item, i) => {
+            return (
+              <>
+                <ul key={i} className="specific-details">
                   <li>Name: {item.name}</li>
                   <li>Prep time: {item.prep_time}</li>
                   <li>Cook time: {item.cook_time}</li>
                   <li>Cuisine: {item.cuisine}</li>
                   <li>complex: {item.complex === false ? "nope" : "yep"}</li>
                 </ul>
-              );
-            })}
-        <h3>Ingredients</h3>
-        <ul>
-          {this.state.recipeIngredients.map((item, i) => {
-            return (
-              <li key={i}>
-                {i + 1}: {item.name}, {item.amount}
-              </li>
+                <h3 className="specific-ing-header">Ingredients</h3>
+                <ul className="specific-ing-list">
+                  {this.state.recipeIngredients.map((item, i) => {
+                    return (
+                      <li key={i} className="specific-ing-item">
+                        {i + 1}: {item.name}, {item.amount}
+                      </li>
+                    );
+                  })}
+                </ul>
+                <h3 className="specific-instrc-header">Instructions</h3>
+                <ul className="specific-instrc-list">
+                  {this.state.recipeInstructions.map((item, i) => {
+                    return (
+                      <li key={i} className="specific-instrc-item">
+                        Step {i + 1}: {item.instructions}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </>
             );
-          })}
-        </ul>
-        <h3>Instructions</h3>
-        <ul>
-          {this.state.recipeInstructions.map((item, i) => {
-            return (
-              <li key={i}>
-                Step {i + 1}: {item.instructions}
-              </li>
-            );
-          })}
-        </ul>
+          })
+        )}
       </section>
     );
   }
