@@ -177,7 +177,6 @@ class Submit extends Component {
           </fieldset>
           <fieldset className="instructions-fieldset">
             <legend>Instructions</legend>
-            <button onClick={this.addInstructionField}>Add Instruction</button>
             {instructions.map((val, idx) => {
               let instrcId = `ing-${idx}`;
               return (
@@ -195,6 +194,7 @@ class Submit extends Component {
                 </section>
               );
             })}
+            <button onClick={this.addInstructionField}>Add Instruction</button>
           </fieldset>
         </fieldset>
         <button type="submit" className="recipe-submit-button">
