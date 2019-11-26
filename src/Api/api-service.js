@@ -43,10 +43,14 @@ const ApiService = {
       .then(instructions => instructions);
   },
   getRecipe(answers) {
+    // takes user answers and creates a query string
     var getUrl = new URL(`${config.API_ENDPOINT}/api/recipe`);
     Object.keys(answers).forEach(key =>
       getUrl.searchParams.append(key, answers[key])
     );
+    // uses that query string to get a specific recipe's id
+    // passes that id as a new redirect url -> /recipes/:id
+    // which routes to SpecRecipe which gets all needed info
     fetch(getUrl)
       .then(response => response.json())
       .then(response =>
@@ -54,6 +58,13 @@ const ApiService = {
           ? (window.location.href = `/recipes/${response.newId}`)
           : (window.location.href = "/recipe/uhoh")
       );
+  },
+  getAll(id) {
+    return Promise.all([
+      this.getRecipeDetails(id).then(recipe => recipe),
+      this.getRecipeIngredients(id).then(ingredients => ingredients),
+      this.getRecipeInstructions(id).then(instructions => instructions)
+    ]);
   }
 };
 

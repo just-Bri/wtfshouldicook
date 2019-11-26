@@ -13,17 +13,15 @@ export default class SpecRecipe extends Component {
 
   componentDidMount() {
     let id = this.props.match.params.id;
-    return Promise.all([
-      ApiService.getRecipeDetails(id).then(recipe => {
-        this.setState({ recipeDetails: recipe });
-      }),
-      ApiService.getRecipeIngredients(id).then(ingredients => {
-        this.setState({ recipeIngredients: ingredients });
-      }),
-      ApiService.getRecipeInstructions(id).then(instructions => {
-        this.setState({ recipeInstructions: instructions });
+    ApiService.getAll(id)
+      .then(response => {
+        this.setState({
+          recipeDetails: response[0],
+          recipeIngredients: response[1],
+          recipeInstructions: response[2]
+        });
       })
-    ]).catch(e => console.log("Promise.all e", e));
+      .catch(e => console.log("Promise.all e", e));
   }
 
   render() {
