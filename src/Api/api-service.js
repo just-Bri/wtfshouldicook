@@ -1,5 +1,4 @@
 import config from "../config";
-// import { url } from "inspector";
 
 const ApiService = {
   submitRecipe(newRecipe) {
@@ -21,6 +20,27 @@ const ApiService = {
     } catch (error) {
       console.log(error);
     }
+  },
+  getRecipeDetails(id) {
+    return fetch(`${config.API_ENDPOINT}/api/recipe/${id}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(recipe => recipe);
+  },
+  getRecipeIngredients(id) {
+    return fetch(`${config.API_ENDPOINT}/api/ingredient/${id}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(ingredients => ingredients);
+  },
+  getRecipeInstructions(id) {
+    return fetch(`${config.API_ENDPOINT}/api/instruction/${id}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(instructions => instructions);
   },
   getRecipe(answers) {
     var getUrl = new URL(`${config.API_ENDPOINT}/api/recipe`);

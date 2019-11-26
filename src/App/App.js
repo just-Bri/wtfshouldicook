@@ -21,24 +21,20 @@ export default class App extends Component {
       cuisine: "",
       complex: "",
       recipe: "will come from the api"
-      // loggedIn: false
     };
   }
 
   updateCraving = craving => {
-    // console.log("this.state.craving is being set to: " + craving);
     this.setState({
       craving: craving
     });
   };
   updateCuisine = cuisine => {
-    // console.log("this.state.cuisine is being set to: " + cuisine);
     this.setState({
       cuisine: cuisine
     });
   };
   updateComplex = complex => {
-    // console.log("this.state.complex is being set to: " + complex);
     this.setState({
       complex: complex
     });
@@ -57,10 +53,6 @@ export default class App extends Component {
             updateComplex: this.updateComplex,
             recipeToDisplay: this.state.recipe,
             getRecipe: this.getRecipe
-            // on hold
-            // loggedIn: this.state.loggedIn,
-            // logIn: this.logIn,
-            // logOut: this.ogOut
           }}
         >
           <TopBar />
