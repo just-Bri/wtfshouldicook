@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import AppContext from "./AppContext";
 import OpeningQuestion from "../Questions/QuestionOpening";
@@ -58,37 +58,37 @@ export default class App extends Component {
           <TopBar />
           <main>
             <Router>
-              <Route exact path="/">
-                <OpeningQuestion />
-              </Route>
-              <Route exact path="/cuisine">
-                {this.state.craving === "" ? (
+              <Switch>
+                <Route exact path="/">
                   <OpeningQuestion />
-                ) : (
-                  <QuestionCuisine />
-                )}
-              </Route>
-              <Route exact path="/complex">
-                {this.state.craving === "" ? (
-                  <OpeningQuestion />
-                ) : (
-                  <QuestionComplex />
-                )}
-              </Route>
-              <Route exact path="/recipe/">
-                {this.state.complex === "" ? <OpeningQuestion /> : <Recipe />}
-              </Route>
-              <Route
-                exact
-                path="/recipes/:id"
-                render={props => <SpecRecipe {...props} />}
-              />
-              <Route exact path="/submit">
-                <Submit />
-              </Route>
-              <Route exact path="/recipe/uhoh">
-                <Uhoh />
-              </Route>
+                </Route>
+                <Route path="/cuisine">
+                  {this.state.craving === "" ? (
+                    <OpeningQuestion />
+                  ) : (
+                    <QuestionCuisine />
+                  )}
+                </Route>
+                <Route exact path="/complex">
+                  {this.state.craving === "" ? (
+                    <OpeningQuestion />
+                  ) : (
+                    <QuestionComplex />
+                  )}
+                </Route>
+                <Route exact path="/recipe/">
+                  {this.state.complex === "" ? <OpeningQuestion /> : <Recipe />}
+                </Route>
+                <Route
+                  exact
+                  path="/recipes/:id"
+                  render={props => <SpecRecipe {...props} />}
+                />
+                <Route exact path="/submit">
+                  <Submit />
+                </Route>
+                <Route component={Uhoh} />
+              </Switch>
             </Router>
           </main>
         </AppContext.Provider>

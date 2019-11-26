@@ -2,14 +2,19 @@ import React, { Component } from "react";
 import AppContext from "../App/AppContext";
 import "./SpecRecipe.css";
 import ApiService from "../Api/api-service";
+import Uhoh from "./Uhoh";
 
 export default class SpecRecipe extends Component {
   static contextType = AppContext;
-  state = {
-    recipeDetails: [],
-    recipeIngredients: [],
-    recipeInstructions: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      recipeDetails: [],
+      recipeIngredients: [],
+      recipeInstructions: [],
+      done: "no"
+    };
+  }
 
   componentDidMount() {
     let id = this.props.match.params.id;
@@ -18,7 +23,8 @@ export default class SpecRecipe extends Component {
         this.setState({
           recipeDetails: response[0],
           recipeIngredients: response[1],
-          recipeInstructions: response[2]
+          recipeInstructions: response[2],
+          done: "yes"
         });
       })
       .catch(e => console.log("Promise.all e", e));
@@ -59,17 +65,8 @@ export default class SpecRecipe extends Component {
           })}
         </ul>
       </section>
-    ) : (
-      setTimeout(() => {
-        return (
-          <>
-            <h2>wtfdidyoudo?</h2>
-            <p> This recipe doesn't exist yet!</p>
-            <p>Please click on "Get a Recipe!"</p>
-            <p>or "Submit a Recipe!" up above</p>
-          </>
-        );
-      }, 3000)
-    );
+    ) : this.state.done === "yes" ? (
+      <Uhoh />
+    ) : null;
   }
 }
