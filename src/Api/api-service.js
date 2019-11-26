@@ -29,7 +29,11 @@ const ApiService = {
     );
     fetch(getUrl)
       .then(response => response.json())
-      .then(response => (window.location.href = `/recipes/${response.newId}`));
+      .then(response =>
+        response.newId
+          ? (window.location.href = `/recipes/${response.newId}`)
+          : (window.location.href = "/recipe/uhoh")
+      );
   }
 };
 

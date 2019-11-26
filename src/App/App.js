@@ -11,6 +11,7 @@ import TopBar from "../TopBar/TopBar";
 import Submit from "../Submit/Submit";
 import ApiService from "../Api/api-service";
 import "../config";
+import Uhoh from "../Recipe/Uhoh";
 
 export default class App extends Component {
   constructor() {
@@ -92,6 +93,9 @@ export default class App extends Component {
               />
               <Route exact path="/submit">
                 <Submit />
+              </Route>
+              <Route exact path="/recipe/uhoh">
+                <Uhoh />
               </Route>
             </Router>
           </main>
