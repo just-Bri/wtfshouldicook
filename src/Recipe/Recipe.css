@@ -1,3 +1,40 @@
-.sepecfic-instr-list {
+.sepecfic-container {
   max-width: 600px;
+}
+
+.specific-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0.25rem;
+  grid-row-gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+.specific-details li:not(:first-child) {
+  text-align: left;
+}
+
+.recipe-name {
+  grid-area: 1 / 1 / 2 / 4;
+  margin-bottom: 0.5rem;
+}
+.recipe-cuisine {
+  grid-area: 2 / 1 / 3 / 2;
+}
+.recipe-complex {
+  grid-area: 3 / 1 / 4 / 2;
+}
+.recipe-prep-time {
+  grid-area: 2 / 2 / 3 / 3;
+}
+.recipe-cook-time {
+  grid-area: 3 / 2 / 4 / 3;
+}
+
+.specific-ing-list {
+  display: flex;
+  flex-direction: column;
+}
+.specific-ing-list:nth-child(4n) {
+  flex-basis: 100%;
 }
