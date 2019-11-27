@@ -46,7 +46,7 @@ const ApiService = {
     // takes user answers and creates a query string
     var getUrl = new URL(`${config.API_ENDPOINT}/api/recipe`);
     Object.keys(answers).forEach(key =>
-      getUrl.searchParams.append(key, answers[key])
+      key !== "craving" ? getUrl.searchParams.append(key, answers[key]) : null
     );
     // uses that query string to get a specific recipe's id
     // passes that id as a new redirect url -> /recipes/:id
