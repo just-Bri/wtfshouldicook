@@ -18,8 +18,7 @@ export default class App extends Component {
     this.state = {
       craving: "",
       cuisine: "",
-      complex: "",
-      recipe: "will come from the api"
+      complex: ""
     };
   }
 
