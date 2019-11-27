@@ -42,7 +42,7 @@ export default class QuestionCuisine extends Component {
                 this.context.updateCuisine("french");
               }}
             >
-              French
+              french
             </Link>
           </li>
           <li className="cuisine-option">
