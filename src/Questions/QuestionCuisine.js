@@ -7,7 +7,7 @@ export default class QuestionCuisine extends Component {
   render() {
     return (
       <section className="cuisine-options-container">
-        <label className="cuisine-header header">What sounds good?</label>
+        <label className="cuisine-header header">what sounds good?</label>
         <ul className="cuisine-options-list option-list">
           {/* FIX */}
           {/* Refactor this to a function that pulls
@@ -20,7 +20,7 @@ export default class QuestionCuisine extends Component {
                 this.context.updateCuisine("british");
               }}
             >
-              British
+              british
             </Link>
           </li>
           <li className="cuisine-option">
@@ -31,7 +31,7 @@ export default class QuestionCuisine extends Component {
                 this.context.updateCuisine("chinese");
               }}
             >
-              Chinese
+              chinese
             </Link>
           </li>
           <li className="cuisine-option">
@@ -53,7 +53,7 @@ export default class QuestionCuisine extends Component {
                 this.context.updateCuisine("indian");
               }}
             >
-              Indian
+              indian
             </Link>
           </li>
           <li className="cuisine-option">
@@ -64,7 +64,7 @@ export default class QuestionCuisine extends Component {
                 this.context.updateCuisine("italian");
               }}
             >
-              Italian
+              italian
             </Link>
           </li>
           <li className="cuisine-option">
@@ -75,7 +75,7 @@ export default class QuestionCuisine extends Component {
                 this.context.updateCuisine("mexican");
               }}
             >
-              Mexican
+              mexican
             </Link>
           </li>
           {/* FIX */}

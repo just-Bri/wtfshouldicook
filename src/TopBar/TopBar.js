@@ -7,8 +7,8 @@ export default class TopBar extends Component {
   render() {
     return (
       <section className="top-bar">
-        <a href="/">Get a Recipe!</a>
-        <a href="/submit">Submit a Recipe!</a>
+        <a href="/">get a recipe</a>
+        <a href="/submit">submit a recipe</a>
         {/* The below will be added once user accounts are implimented */}
         {/* {this.context.loggedIn ? (
           <>

@@ -8,7 +8,7 @@ export default class QuestionComplex extends Component {
     return (
       <section className="complex-options-container">
         <label className="adventurous-header header">
-          Feeling adventorous?
+          feeling adventorous?
         </label>
         <ul className="complex-options-list option-list">
           <li className="complex-option">
@@ -19,7 +19,7 @@ export default class QuestionComplex extends Component {
                 this.context.updateComplex("yes");
               }}
             >
-              Yes!
+              yes
             </button>
           </li>
           <li className="complex-option">
@@ -30,7 +30,7 @@ export default class QuestionComplex extends Component {
                 this.context.updateComplex("no");
               }}
             >
-              No.
+              no
             </button>
           </li>
         </ul>

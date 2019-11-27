@@ -4,12 +4,17 @@
   float: right;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.top-bar a {
+  border: 1px solid #81a1c1;
 }
 
 @media screen and (max-width: 1040px) {
   .top-bar {
     justify-content: center;
     float: none;
-    border-bottom: 0.1rem solid black;
+    border-bottom: 0.1rem solid #81a1c1;
   }
 }

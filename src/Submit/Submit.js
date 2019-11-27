@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./Submit.css";
-// import config from "../config";
 import ApiService from "../Api/api-service";
 
 import AppContext from "../App/AppContext";
@@ -76,11 +75,12 @@ class Submit extends Component {
     return (
       <form className="submit-form" onSubmit={this.handleSubmit.bind(this)}>
         <fieldset className="submit-fieldset">
-          <legend className="main-legend">Submit a new recipe!</legend>
+          <legend className="main-legend">submit a new recipe</legend>
           <fieldset className="details-fieldset">
             <section className="name-container">
-              <label>Name</label>
+              <label>name:</label>
               <input
+                className="input-name"
                 type="text"
                 onChange={this.handleChange}
                 name="name"
@@ -96,14 +96,18 @@ class Submit extends Component {
                 placeholder="Mexican, Italian etc..."
                 required
               /> */}
-              <label>Cuisine</label>
-              <select name="cuisine" onChange={this.handleChange}>
-                <option value="british">British</option>
-                <option value="chinese">Chinese</option>
-                <option value="french">French</option>
-                <option value="indian">Indian</option>
-                <option value="italian">Italian</option>
-                <option value="mexican">Mexican</option>
+              <label>cuisine:</label>
+              <select
+                className="input-cuisine"
+                name="cuisine"
+                onChange={this.handleChange}
+              >
+                <option value="british">british</option>
+                <option value="chinese">chinese</option>
+                <option value="french">french</option>
+                <option value="indian">indian</option>
+                <option value="italian">italian</option>
+                <option value="mexican">mexican</option>
               </select>
             </section>
             {/* <section className="url-container">
@@ -116,8 +120,9 @@ class Submit extends Component {
               />
             </section> */}
             <section className="prep-container">
-              <label>Prep Time</label>
+              <label>prep time:</label>
               <input
+                className="input-prep"
                 type="number"
                 onChange={this.handleNumberChange}
                 name="prep_time"
@@ -126,8 +131,9 @@ class Submit extends Component {
               />
             </section>
             <section className="cook-container">
-              <label>Cook Time</label>
+              <label>cook time:</label>
               <input
+                className="input-cook"
                 type="number"
                 onChange={this.handleNumberChange}
                 name="cook_time"
@@ -137,16 +143,25 @@ class Submit extends Component {
             </section>
 
             <section className="complex-container">
-              <label>Complex?</label>
-              <select name="complex" onChange={this.handleChange}>
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
+              <label>is it complex?</label>
+              <select
+                className="input-complex"
+                name="complex"
+                onChange={this.handleChange}
+              >
+                <option value="no">no</option>
+                <option value="yes">yes</option>
               </select>
             </section>
           </fieldset>
           <fieldset className="ingredients-fieldset">
-            <legend>Ingredients</legend>
-            <button onClick={this.addIngredientField}>Add Ingredient</button>
+            <legend>ingredients</legend>
+            <button
+              className="add-ing-button"
+              onClick={this.addIngredientField}
+            >
+              add ingredient
+            </button>
             {ingredients.map((val, idx) => {
               let ingId = `ing-${idx}`,
                 amountId = `amount-${idx}`;
@@ -176,8 +191,13 @@ class Submit extends Component {
             })}
           </fieldset>
           <fieldset className="instructions-fieldset">
-            <legend>Instructions</legend>
-            <button onClick={this.addInstructionField}>Add Instruction</button>
+            <legend>instructions</legend>
+            <button
+              className="add-instr-button"
+              onClick={this.addInstructionField}
+            >
+              add instruction
+            </button>
             {instructions.map((val, idx) => {
               let instrcId = `ing-${idx}`;
               return (
@@ -197,8 +217,8 @@ class Submit extends Component {
             })}
           </fieldset>
         </fieldset>
-        <button type="submit" className="recipe-submit-button">
-          Submit!
+        <button type="submit" className="submit-button">
+          submit
         </button>
       </form>
     );

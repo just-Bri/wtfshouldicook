@@ -8,9 +8,9 @@ export default class QuestionOpening extends Component {
     return (
       <section className="opening-question">
         <h3 className="opening-header header">
-          Answer a few simple questions and get a recipe!
+          answer a few simple questions and get a recipe
         </h3>
-        <label className="header">Craving a certain cuisine?</label>
+        <label className="header">craving a certain cuisine?</label>
         <ul className="craving-options option-list">
           <li className="craving-option-container">
             <Link
@@ -20,7 +20,7 @@ export default class QuestionOpening extends Component {
                 this.context.updateCraving("yes");
               }}
             >
-              Yes!
+              yes
             </Link>
           </li>
           <li className="craving-option-container">
@@ -31,7 +31,7 @@ export default class QuestionOpening extends Component {
                 this.context.updateCraving("no");
               }}
             >
-              No.
+              no
             </Link>
           </li>
         </ul>

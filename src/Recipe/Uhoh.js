@@ -5,9 +5,9 @@ export default class Uhoh extends Component {
     return (
       <>
         <h2>wtfdidyoudo?</h2>
-        <p> This doesn't exist!</p>
-        <p>Please click on "Get a Recipe!"</p>
-        <p>or "Submit a Recipe!" up above</p>
+        <p> this doesn't exist!</p>
+        <p>please click on "get a recipe"</p>
+        <p>or "submit a recipe" up above</p>
       </>
     );
   }
