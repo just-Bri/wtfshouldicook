@@ -88,7 +88,10 @@
 .input-cuisine,
 .input-prep,
 .input-cook,
-.input-complex {
+.input-complex,
+.ingredient-name,
+.ingredient-amount,
+.instructions-name {
   background: none;
   color: #81a1c1;
   border: 1px solid #81a1c1;
