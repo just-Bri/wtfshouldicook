@@ -105,6 +105,9 @@
 .input-complex::placeholder {
   color: #81a1c1;
 }
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 .details-fieldset section label {
   margin-top: 0.5rem;
 }
