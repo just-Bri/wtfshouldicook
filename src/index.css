@@ -3,6 +3,7 @@
   font-family: "Cascadia";
   src: local("Cascadia"),
     url(./fonts/CascadiaCode-Regular-VTT.ttf) format("truetype");
+  font-display: swap;
 }
 
 body {
