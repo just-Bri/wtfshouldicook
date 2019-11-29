@@ -4,14 +4,12 @@
   src: local("Cascadia"),
     url(./fonts/CascadiaCode-Regular-VTT.ttf) format("truetype");
 }
-/* I just really like this font! */
 
 body {
   font-family: Cascadia;
   font-weight: 300;
   text-align: center;
   margin: 0 auto;
-  /* width: fit-content; */
   background-color: #2e3440;
   color: #81a1c1;
 }
@@ -59,8 +57,12 @@ ul {
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  height: 2rem;
+  height: 2.5rem;
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 4rem;
+}
+
+.craving-option-container {
+  height: 2.5rem;
+  width: 4rem;
 }
