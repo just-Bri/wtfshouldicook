@@ -8,7 +8,7 @@ export default class QuestionComplex extends Component {
     return (
       <section className="complex-options-container">
         <label className="adventurous-header header">
-          feeling adventorous?
+          feeling adventurous?
         </label>
         <ul className="complex-options-list option-list">
           <li className="complex-option">
