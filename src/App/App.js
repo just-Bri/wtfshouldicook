@@ -12,9 +12,6 @@ import ApiService from "../Api/api-service";
 import "../config";
 import Uhoh from "../Recipe/Uhoh";
 
-navigator.serviceWorker &&
-  navigator.serviceWorker.register("SW.js").then(registration => {});
-
 export default class App extends Component {
   constructor() {
     super();
