@@ -5,8 +5,8 @@ See it live at [wtfshouldicook](https://wtfshouldicook.com)
 
 Documentation for API: [wtfshouldicook-api](https://github.com/reifnotreef/wtfshouldicook-api)
 
-Format: ![Alt Text](url)
-
+Front Page:
 ![front page](Screenshot_20191130-140411~2.png)
 
+Submit Page:
 ![submit page](Screenshot_20191130-140419~2.png)
