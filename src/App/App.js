@@ -10,7 +10,7 @@ import TopBar from "../TopBar/TopBar";
 import Submit from "../Submit/Submit";
 import ApiService from "../Api/api-service";
 import "../config";
-import Uhoh from "../Recipe/Uhoh";
+import Uhoh from "../Uhoh/Uhoh";
 
 export default class App extends Component {
   constructor() {
