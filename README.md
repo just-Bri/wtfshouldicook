@@ -5,6 +5,18 @@ See it live at [wtfshouldicook](https://wtfshouldicook.com)
 
 Documentation for API: [wtfshouldicook-api](https://github.com/reifnotreef/wtfshouldicook-api)
 
+## Tech used
+### Front-end
+> Node
+
+> React
+### Back-end
+> Express
+
+> PostgresQL for database
+
+> knex for querying database
+
 Front Page:
 ![front page](Screenshot_20191130-140411~2.png)
 
