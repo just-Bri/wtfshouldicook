@@ -22,6 +22,7 @@ class Submit extends Component {
     this.handleIngChange = this.handleIngChange.bind(this);
     this.handleInstrChange = this.handleInstrChange.bind(this);
     this.handleNumberChange = this.handleNumberChange.bind(this);
+    this.removeIngredientField = this.removeIngredientField.bind(this);
   }
 
   handleChange(e) {
@@ -37,11 +38,19 @@ class Submit extends Component {
       ingredients: [...this.state.ingredients, { name: "", amount: "" }]
     });
   };
+  removeIngredientField = idx => {
+    this.setState(prevState => ({
+      ingredients: prevState.ingredients.filter((_, i) => i !== idx)
+    }));
+  };
+
   addInstructionField = () => {
     this.setState({
       instructions: [...this.state.instructions, { instructions: "" }]
     });
   };
+  removeInstructionField = () => {};
+
   handleInstrChange = e => {
     let instrc = [...this.state.instructions];
     instrc[e.target.name].instructions = e.target.value;
@@ -58,6 +67,63 @@ class Submit extends Component {
     this.setState({ ingredients: ings });
   };
 
+  renderIngInputs = () => {
+    return this.state.ingredients.map((val, idx) => {
+      let ingId = `ing-${idx}`,
+        amountId = `amount-${idx}`;
+      return (
+        <section key={idx} className="ingredients-input-container">
+          <label
+            htmlFor={ingId}
+            className="ingredient-name-label"
+          >{`Ingredient #${idx + 1}`}</label>
+          <input
+            className="ingredient-name"
+            type="text"
+            name={`${idx}`}
+            onChange={e => this.handleIngChange(e, "name")}
+            required
+          />
+          <label htmlFor={amountId}>{`Amount #${idx + 1}`}</label>
+          <input
+            className="ingredient-amount"
+            type="text"
+            name={`${idx}`}
+            onChange={e => this.handleIngChange(e, "amount")}
+            required
+          />
+          <button
+            className="del-this"
+            onClick={() => this.removeIngredientField(idx)}
+          >
+            remove
+          </button>
+        </section>
+      );
+    });
+  };
+
+  renderInstrInputs = () => {
+    return this.state.instructions.map((val, idx) => {
+      let instrcId = `ing-${idx}`;
+      return (
+        <section key={idx} className="instructions-input-container">
+          <label
+            htmlFor={instrcId}
+            className="instructions-name-label"
+          >{`Step #${idx + 1}`}</label>
+          <textarea
+            className="instructions-name"
+            name={`${idx}`}
+            onChange={e => this.handleInstrChange(e)}
+            required
+          />
+          <button className="del-this instr-button">remove</button>
+        </section>
+      );
+    });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     // console.log(this.state);
@@ -71,7 +137,6 @@ class Submit extends Component {
   };
 
   render() {
-    let { ingredients, instructions } = this.state;
     return (
       <form className="submit-form" onSubmit={this.handleSubmit.bind(this)}>
         <fieldset className="submit-fieldset">
@@ -154,33 +219,7 @@ class Submit extends Component {
             >
               add ingredient
             </button>
-            {ingredients.map((val, idx) => {
-              let ingId = `ing-${idx}`,
-                amountId = `amount-${idx}`;
-              return (
-                <section key={idx} className="ingredients-input-container">
-                  <label
-                    htmlFor={ingId}
-                    className="ingredient-name-label"
-                  >{`Ingredient #${idx + 1}`}</label>
-                  <input
-                    className="ingredient-name"
-                    type="text"
-                    name={`${idx}`}
-                    onChange={e => this.handleIngChange(e, "name")}
-                    required
-                  />
-                  <label htmlFor={amountId}>{`Amount #${idx + 1}`}</label>
-                  <input
-                    className="ingredient-amount"
-                    type="text"
-                    name={`${idx}`}
-                    onChange={e => this.handleIngChange(e, "amount")}
-                    required
-                  />
-                </section>
-              );
-            })}
+            {this.renderIngInputs()}
           </fieldset>
           <fieldset className="instructions-fieldset">
             <legend>instructions</legend>
@@ -190,23 +229,7 @@ class Submit extends Component {
             >
               add instruction
             </button>
-            {instructions.map((val, idx) => {
-              let instrcId = `ing-${idx}`;
-              return (
-                <section key={idx} className="instructions-input-container">
-                  <label
-                    htmlFor={instrcId}
-                    className="instructions-name-label"
-                  >{`Step #${idx + 1}`}</label>
-                  <textarea
-                    className="instructions-name"
-                    name={`${idx}`}
-                    onChange={e => this.handleInstrChange(e)}
-                    required
-                  />
-                </section>
-              );
-            })}
+            {this.renderInstrInputs()}
           </fieldset>
         </fieldset>
         <button type="submit" className="submit-button">
