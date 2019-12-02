@@ -88,23 +88,15 @@ class Submit extends Component {
               />
             </section>
             <section className="cuisine-container">
-              {/* <label>Cuisine</label>
-              <input
-                type="text"
-                onChange={this.handleChange}
-                name="cuisine"
-                placeholder="Mexican, Italian etc..."
-                required
-              /> */}
               <label>cuisine:</label>
               <select
                 className="input-cuisine"
                 name="cuisine"
                 onChange={this.handleChange}
               >
+                <option value="american">american</option>
                 <option value="british">british</option>
                 <option value="chinese">chinese</option>
-                <option value="french">french</option>
                 <option value="indian">indian</option>
                 <option value="italian">italian</option>
                 <option value="mexican">mexican</option>
