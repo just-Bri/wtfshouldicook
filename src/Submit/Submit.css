@@ -46,7 +46,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 15rem;
 }
 .ingredients-fieldset legend,
 .hardware-fieldset legend,
@@ -110,6 +109,11 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 .details-fieldset section label {
   margin-top: 0.5rem;
+}
+
+.instructions-name {
+  margin: 0 auto;
+  width: 400px;
 }
 
 @media screen and (max-width: 450px) {
