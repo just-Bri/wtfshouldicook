@@ -2,18 +2,6 @@
   max-width: 600px;
 }
 
-.specific-details {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 0.25rem;
-  grid-row-gap: 0.25rem;
-  margin-bottom: 0.5rem;
-}
-.specific-details li:not(:first-child) {
-  text-align: left;
-}
-
 .recipe-name {
   grid-area: 1 / 1 / 2 / 4;
   margin-bottom: 0.5rem;
@@ -31,10 +19,74 @@
   grid-area: 3 / 2 / 4 / 3;
 }
 
+.specific-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0.25rem;
+  grid-row-gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+.specific-details li:not(:first-child) {
+  text-align: left;
+}
+.specific-details li {
+  margin: 0.5rem;
+}
+
+.ing-container,
+.instr-container,
+.specific-details {
+  margin: 0 auto;
+  margin-bottom: 0.75rem;
+  border: 1px solid #81a1c1;
+  max-width: 80vw;
+  width: fit-content;
+  min-width: 350px;
+}
+
+.ing-container,
+.instr-container {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.specific-ing-header {
+  margin-bottom: 0.5rem;
+}
+
 .specific-ing-list {
   display: flex;
   flex-direction: column;
 }
+.specific-ing-item {
+  margin-bottom: 0.25rem;
+}
 .specific-ing-list:nth-child(4n) {
   flex-basis: 100%;
+}
+
+.instr-container {
+  margin-bottom: 1.5rem;
+}
+.specific-instrc-header {
+  margin-bottom: 0.5rem;
+}
+
+.specific-instrc-list {
+  display: flex;
+  flex-direction: column;
+  flex-basis: auto;
+}
+.specific-instrc-list :not(:last-child):after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 5rem;
+  padding-top: 1rem;
+  border-bottom: 1px solid #81a1c1;
+}
+.specific-instrc-item {
+  margin: 0.4rem;
+  max-width: 80vw;
 }

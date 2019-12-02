@@ -30,45 +30,55 @@ export default class Recipe extends Component {
       .catch(e => console.log("Promise.all e", e));
   }
 
+  recDetails = () => {
+    return this.state.recipeDetails.map((item, i) => {
+      return (
+        <ul key={i} className="specific-details">
+          <li className="recipe-name">name: {item.name}</li>
+          <li className="recipe-cuisine">cuisine: {item.cuisine}</li>
+          <li className="recipe-complex">
+            complex: {item.complex === false ? "nope" : "yep"}
+          </li>
+          <li className="recipe-prep-time">prep time: {item.prep_time}</li>
+          <li className="recipe-cook-time">cook time: {item.cook_time}</li>
+        </ul>
+      );
+    });
+  };
+
+  recIngs = () => {
+    return this.state.recipeIngredients.map((item, i) => {
+      return (
+        <li key={i} className="specific-ing-item">
+          {i + 1}: {item.name}, {item.amount}
+        </li>
+      );
+    });
+  };
+
+  recInstr = () => {
+    return this.state.recipeInstructions.map((item, i) => {
+      return (
+        <React.Fragment key={i}>
+          <li className="specific-instrc-item">
+            Step {i + 1}: {item.instructions}
+          </li>
+        </React.Fragment>
+      );
+    });
+  };
+
   render() {
     return this.state.recipeDetails.length > 0 ? (
       <section className="specific-container">
-        {this.state.recipeDetails.map((item, i) => {
-          return (
-            <ul key={i} className="specific-details">
-              <li className="recipe-name">name: {item.name}</li>
-              <li className="recipe-cuisine">cuisine: {item.cuisine}</li>
-              <li className="recipe-complex">
-                complex: {item.complex === false ? "nope" : "yep"}
-              </li>
-              <li className="recipe-prep-time">prep time: {item.prep_time}</li>
-              <li className="recipe-cook-time">cook time: {item.cook_time}</li>
-            </ul>
-          );
-        })}
+        {this.recDetails()}
         <section className="ing-container">
-          <h3 className="specific-ing-header">ingredients</h3>
-          <ul className="specific-ing-list">
-            {this.state.recipeIngredients.map((item, i) => {
-              return (
-                <li key={i} className="specific-ing-item">
-                  {i + 1}: {item.name}, {item.amount}
-                </li>
-              );
-            })}
-          </ul>
+          <h3 className="specific-ing-header">INGREDIENTS</h3>
+          <ul className="specific-ing-list">{this.recIngs()}</ul>
         </section>
         <section className="instr-container">
-          <h3 className="specific-instrc-header">instructions</h3>
-          <ul className="specific-instrc-list">
-            {this.state.recipeInstructions.map((item, i) => {
-              return (
-                <li key={i} className="specific-instrc-item">
-                  Step {i + 1}: {item.instructions}
-                </li>
-              );
-            })}
-          </ul>
+          <h3 className="specific-instrc-header">INSTRUCTIONS</h3>
+          <ul className="specific-instrc-list">{this.recInstr()}</ul>
         </section>
       </section>
     ) : this.state.done === "yes" ? (
