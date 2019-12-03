@@ -19,7 +19,7 @@ Documentation for API: [wtfshouldicook-api](https://github.com/reifnotreef/wtfsh
 
 ## Screenshots
 Front Page:
-![front page](Screenshot_20191130-140411~2.png)
+![front page](Screenshot_20191130-140411~2.png =250x)
 
 Submit Page:
-![submit page](Screenshot_20191130-140419~2.png)
+![submit page](Screenshot_20191130-140419~2.png =250x)
