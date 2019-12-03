@@ -19,8 +19,11 @@ Documentation for API: [wtfshouldicook-api](https://github.com/reifnotreef/wtfsh
 
 ## Screenshots
 Front Page:
+
 <img src="https://github.com/reifnotreef/wtfshouldicook/blob/master/Screenshot_20191130-140411~2.png" width="40%">
 ![front page](https://github.com/reifnotreef/wtfshouldicook/blob/master/Screenshot_20191130-140411~2.png)
 
 Submit Page:
+
+<img src="https://github.com/reifnotreef/wtfshouldicook/blob/master/Screenshot_20191130-140419~2.png" width="40%">
 ![submit page](https://github.com/reifnotreef/wtfshouldicook/blob/master/Screenshot_20191130-140419~2.png)
