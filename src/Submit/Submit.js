@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import uuidv1 from "uuid/v1";
 import "./Submit.css";
 import ApiService from "../Api/api-service";
 
@@ -38,10 +39,13 @@ class Submit extends Component {
       ingredients: [...this.state.ingredients, { name: "", amount: "" }]
     });
   };
-  removeIngredientField = idx => {
-    this.setState(prevState => ({
-      ingredients: prevState.ingredients.filter((_, i) => i !== idx)
-    }));
+  removeIngredientField = (e, val) => {
+    e.preventDefault();
+    let ings = [...this.state.ingredients];
+    let blah = ings.filter(item => item.id !== val.id);
+    this.setState({
+      ingredients: blah
+    });
   };
 
   addInstructionField = () => {
@@ -67,41 +71,9 @@ class Submit extends Component {
     this.setState({ ingredients: ings });
   };
 
-  renderIngInputs = () => {
-    return this.state.ingredients.map((val, idx) => {
-      let ingId = `ing-${idx}`,
-        amountId = `amount-${idx}`;
-      return (
-        <section key={idx} className="ingredients-input-container">
-          <label
-            htmlFor={ingId}
-            className="ingredient-name-label"
-          >{`Ingredient #${idx + 1}`}</label>
-          <input
-            className="ingredient-name"
-            type="text"
-            name={`${idx}`}
-            onChange={e => this.handleIngChange(e, "name")}
-            required
-          />
-          <label htmlFor={amountId}>{`Amount #${idx + 1}`}</label>
-          <input
-            className="ingredient-amount"
-            type="text"
-            name={`${idx}`}
-            onChange={e => this.handleIngChange(e, "amount")}
-            required
-          />
-          <button
-            className="del-this"
-            onClick={() => this.removeIngredientField(idx)}
-          >
-            remove
-          </button>
-        </section>
-      );
-    });
-  };
+  // renderIngInputs = () => {
+  //   return
+  // };
 
   renderInstrInputs = () => {
     return this.state.instructions.map((val, idx) => {
@@ -137,6 +109,7 @@ class Submit extends Component {
   };
 
   render() {
+    // console.log(this.state);
     return (
       <form className="submit-form" onSubmit={this.handleSubmit.bind(this)}>
         <fieldset className="submit-fieldset">
@@ -219,7 +192,42 @@ class Submit extends Component {
             >
               add ingredient
             </button>
-            {this.renderIngInputs()}
+            {this.state.ingredients.length > 0
+              ? this.state.ingredients.map((val, idx) => {
+                  let ingId = `ing-${idx}`,
+                    amountId = `amount-${idx}`;
+                  val.id = uuidv1();
+                  return (
+                    <section key={idx} className="ingredients-input-container">
+                      <label
+                        htmlFor={ingId}
+                        className="ingredient-name-label"
+                      >{`Ingredient #${idx + 1}`}</label>
+                      <input
+                        className="ingredient-name"
+                        type="text"
+                        name={`${idx}`}
+                        onChange={e => this.handleIngChange(e, "name")}
+                        required
+                      />
+                      <label htmlFor={amountId}>{`Amount #${idx + 1}`}</label>
+                      <input
+                        className="ingredient-amount"
+                        type="text"
+                        name={`${idx}`}
+                        onChange={e => this.handleIngChange(e, "amount")}
+                        required
+                      />
+                      <button
+                        className="del-this"
+                        onClick={e => this.removeIngredientField(e, val)}
+                      >
+                        remove
+                      </button>
+                    </section>
+                  );
+                })
+              : null}
           </fieldset>
           <fieldset className="instructions-fieldset">
             <legend>instructions</legend>
