@@ -205,6 +205,7 @@ class Submit extends Component {
                         className="ingredient-name"
                         type="text"
                         name={`${idx}`}
+                        value={val.name}
                         onChange={e => this.handleIngChange(e, "name")}
                         required
                       />
@@ -212,6 +213,7 @@ class Submit extends Component {
                       <input
                         className="ingredient-amount"
                         type="text"
+                        value={val.amount}
                         name={`${idx}`}
                         onChange={e => this.handleIngChange(e, "amount")}
                         required
