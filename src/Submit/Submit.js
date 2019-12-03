@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import uuidv1 from "uuid/v1";
 import "./Submit.css";
 import ApiService from "../Api/api-service";
 
@@ -41,8 +40,8 @@ class Submit extends Component {
   };
   removeIngredientField = (e, val) => {
     e.preventDefault();
-    let ings = [...this.state.ingredients];
-    let blah = ings.filter(item => item.id !== val.id);
+    let ings = Array.from(this.state.ingredients);
+    let blah = ings.filter(item => item !== val);
     this.setState({
       ingredients: blah
     });
@@ -196,7 +195,6 @@ class Submit extends Component {
               ? this.state.ingredients.map((val, idx) => {
                   let ingId = `ing-${idx}`,
                     amountId = `amount-${idx}`;
-                  val.id = uuidv1();
                   return (
                     <section key={idx} className="ingredients-input-container">
                       <label
