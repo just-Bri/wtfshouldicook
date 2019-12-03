@@ -20,13 +20,7 @@ Documentation for API: [wtfshouldicook-api](https://github.com/reifnotreef/wtfsh
 ## Screenshots
 | Front Page    | Submit Page   |
 | ------------- |:-------------:|
-| <img src="https://github.com/reifnotreef/wtfshouldicook/blob/master/Screenshot_20191130-140411~2.png" width="40%">     | <img src="https://github.com/reifnotreef/wtfshouldicook/blob/master/Screenshot_20191130-140419~2.png" width="40%"> |
-| col 2 is      | centered      |
-| zebra stripes | are neat      |
-Front Page:
+| <img src="https://github.com/reifnotreef/wtfshouldicook/blob/master/Screenshot_20191130-140411~2.png" width="80%">     | <img src="https://github.com/reifnotreef/wtfshouldicook/blob/master/Screenshot_20191130-140419~2.png" width="80%"> |
 
-<img src="https://github.com/reifnotreef/wtfshouldicook/blob/master/Screenshot_20191130-140411~2.png" width="40%">
-
-Submit Page:
 
 
