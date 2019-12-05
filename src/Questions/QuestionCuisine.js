@@ -9,9 +9,17 @@ export default class QuestionCuisine extends Component {
       <section className="cuisine-options-container">
         <label className="cuisine-header header">what sounds good?</label>
         <ul className="cuisine-options-list option-list">
-          {/* FIX */}
-          {/* Refactor this to a function that pulls
-              cuisine options from the database */}
+          <li className="cuisine-option">
+            <Link
+              className="cuisine-link"
+              to="/complex"
+              onClick={() => {
+                this.context.updateCuisine("american");
+              }}
+            >
+              american
+            </Link>
+          </li>
           <li className="cuisine-option">
             <Link
               className="cuisine-link"
@@ -32,17 +40,6 @@ export default class QuestionCuisine extends Component {
               }}
             >
               chinese
-            </Link>
-          </li>
-          <li className="cuisine-option">
-            <Link
-              className="cuisine-link"
-              to="/complex"
-              onClick={() => {
-                this.context.updateCuisine("french");
-              }}
-            >
-              french
             </Link>
           </li>
           <li className="cuisine-option">
@@ -78,7 +75,6 @@ export default class QuestionCuisine extends Component {
               mexican
             </Link>
           </li>
-          {/* FIX */}
         </ul>
       </section>
     );
