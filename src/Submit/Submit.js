@@ -52,7 +52,14 @@ class Submit extends Component {
       instructions: [...this.state.instructions, { instructions: "" }]
     });
   };
-  removeInstructionField = () => {};
+  removeInstructionField = (e, val) => {
+    e.preventDefault();
+    let ings = Array.from(this.state.instructions);
+    let blah = ings.filter(item => item !== val);
+    this.setState({
+      instructions: blah
+    });
+  };
 
   handleInstrChange = e => {
     let instrc = [...this.state.instructions];
@@ -70,10 +77,6 @@ class Submit extends Component {
     this.setState({ ingredients: ings });
   };
 
-  // renderIngInputs = () => {
-  //   return
-  // };
-
   renderInstrInputs = () => {
     return this.state.instructions.map((val, idx) => {
       let instrcId = `ing-${idx}`;
@@ -86,10 +89,16 @@ class Submit extends Component {
           <textarea
             className="instructions-name"
             name={`${idx}`}
+            value={val.instructions}
             onChange={e => this.handleInstrChange(e)}
             required
           />
-          <button className="del-this instr-button">remove</button>
+          <button
+            className="del-this instr-button"
+            onClick={e => this.removeInstructionField(e, val)}
+          >
+            remove
+          </button>
         </section>
       );
     });
