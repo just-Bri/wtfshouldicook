@@ -106,7 +106,6 @@ class Submit extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // console.log(this.state);
     if (this.state.ingredients.length < 2) {
       alert("Please add more ingredients");
     } else if (this.state.instructions.length < 2) {
@@ -117,7 +116,6 @@ class Submit extends Component {
   };
 
   render() {
-    // console.log(this.state);
     return (
       <form className="submit-form" onSubmit={this.handleSubmit.bind(this)}>
         <fieldset className="submit-fieldset">
@@ -148,15 +146,6 @@ class Submit extends Component {
                 <option value="mexican">mexican</option>
               </select>
             </section>
-            {/* <section className="url-container">
-              <label>Picture Url</label>
-              <input
-                type="text"
-                onChange={this.handleChange}
-                name="picture_url"
-                value={this.state.picture_url}
-              />
-            </section> */}
             <section className="prep-container">
               <label>prep time:</label>
               <input

@@ -50,7 +50,7 @@ const ApiService = {
     );
     // uses that query string to get a specific recipe's id
     // passes that id as a new redirect url -> /recipes/:id
-    // which routes to SpecRecipe which gets all needed info
+    // which routes to <Recipe /> which gets all needed info
     return fetch(getUrl)
       .then(response => response.json())
       .then(response =>

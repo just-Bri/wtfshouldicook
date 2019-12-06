@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 import AppContext from "../App/AppContext";
 
 export default class QuestionComplex extends Component {
