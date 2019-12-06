@@ -1,4 +1,9 @@
 # wtfshouldicook.com
+
+This was created for a capstone project during Thinkful's fullstack course.
+
+I've always enjoyed food and cooking so I figured this would be a fun project. Once upon a time there was a website called wherethefuckshouldieat.com that just pulled random restaurants near you from Google Maps. That inspired me to make this!
+
 A simple website for getting a recipe when you just can't decide!
 
 See it live at [wtfshouldicook](https://wtfshouldicook.com)
