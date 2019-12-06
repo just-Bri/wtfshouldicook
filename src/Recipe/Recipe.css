@@ -39,7 +39,6 @@
 .specific-details {
   margin: 0 auto;
   margin-bottom: 0.75rem;
-  border: 1px solid #81a1c1;
   max-width: 80vw;
   width: fit-content;
   min-width: 350px;
@@ -55,8 +54,7 @@
 }
 
 .specific-ing-list {
-  display: flex;
-  flex-direction: column;
+  table-layout: fixed;
 }
 .specific-ing-item {
   margin-bottom: 0.25rem;
@@ -87,5 +85,12 @@
 }
 .specific-instrc-item {
   margin: 0.4rem;
-  max-width: 80vw;
+  max-width: 50rem;
+}
+
+.specific-ing-item {
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #81a1c1;
+  width: 20rem;
 }

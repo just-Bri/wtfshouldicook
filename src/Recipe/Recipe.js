@@ -49,9 +49,10 @@ export default class Recipe extends Component {
   recIngs = () => {
     return this.state.recipeIngredients.map((item, i) => {
       return (
-        <li key={i} className="specific-ing-item">
-          {i + 1}: {item.name}, {item.amount}
-        </li>
+        <tr key={i} className="ing-row">
+          <td className="specific-ing-item">{item.name}</td>
+          <td className="specific-ing-item">{item.amount}</td>
+        </tr>
       );
     });
   };
@@ -74,7 +75,15 @@ export default class Recipe extends Component {
         {this.recDetails()}
         <section className="ing-container">
           <h3 className="specific-ing-header">INGREDIENTS</h3>
-          <ul className="specific-ing-list">{this.recIngs()}</ul>
+          <table className="specific-ing-list">
+            <tbody>
+              <tr className="table-header-row">
+                <td className="specific-ing-item">ITEM</td>
+                <td className="specific-ing-item">AMOUNT</td>
+              </tr>
+              {this.recIngs()}
+            </tbody>
+          </table>
         </section>
         <section className="instr-container">
           <h3 className="specific-instrc-header">INSTRUCTIONS</h3>
