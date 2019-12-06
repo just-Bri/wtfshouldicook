@@ -58,9 +58,10 @@ ul {
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  height: 2.5rem;
+  height: 2rem;
   display: block;
   width: 4rem;
+  padding-top: 0.5rem;
 }
 
 .craving-option-container {

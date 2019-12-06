@@ -11,26 +11,26 @@ export default class QuestionComplex extends Component {
         </label>
         <ul className="complex-options-list option-list">
           <li className="complex-option">
-            <button
+            <a
               className="button-to-recipe"
-              // to="/recipe"
+              href="#foo"
               onClick={() => {
                 this.context.updateComplex("yes");
               }}
             >
               yes
-            </button>
+            </a>
           </li>
           <li className="complex-option">
-            <button
+            <a
               className="button-to-recipe"
-              // to="/recipe"
+              href="#bar"
               onClick={() => {
                 this.context.updateComplex("no");
               }}
             >
               no
-            </button>
+            </a>
           </li>
         </ul>
       </section>
