@@ -1,3 +1,5 @@
-export default {
-  API_ENDPOINT: "https://wtfshouldicook-api.herokuapp.com"
+const API = {
+  API_ENDPOINT: "https://wtfshouldicook-api.herokuapp.com",
 };
+
+export default API;

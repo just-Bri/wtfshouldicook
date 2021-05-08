@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/helper-builder-react-jsx": "^7.12.13",
+    "@babel/helper-regex": "^7.10.5",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
     "css-reset-and-normalize": "^2.1.0",
