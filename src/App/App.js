@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import AppContext from "./AppContext";
-import OpeningQuestion from "../Questions/QuestionOpening";
+import { QuestionOpening } from "../Questions/QuestionOpening";
 import QuestionCuisine from "../Questions/QuestionCuisine";
 import QuestionComplex from "../Questions/QuestionComplex";
 import Recipe from "../Recipe/Recipe";
 import TopBar from "../TopBar/TopBar";
-import Submit from "../Submit/Submit";
+import { Submit } from "../Submit/Submit";
 import ApiService from "../Api/api-service";
 import "../config";
 import Uhoh from "../Uhoh/Uhoh";
@@ -59,34 +59,22 @@ export default class App extends Component {
           <TopBar />
           <main>
             <Router>
-              <Switch>
-                <Route exact path="/">
-                  <OpeningQuestion />
-                </Route>
-                <Route path="/cuisine">
-                  {this.state.craving === "" ? (
-                    <OpeningQuestion />
-                  ) : (
-                    <QuestionCuisine />
-                  )}
-                </Route>
-                <Route exact path="/complex">
-                  {this.state.craving === "" ? (
-                    <OpeningQuestion />
-                  ) : (
-                    <QuestionComplex />
-                  )}
-                </Route>
+              <Routes>
+                <Route exact path="/" render={() => <QuestionOpening />} />
+                <Route path="/cuisine" render={() => <QuestionCuisine />} />
+                <Route
+                  exact
+                  path="/complex"
+                  render={() => <QuestionComplex />}
+                />
                 <Route
                   exact
                   path="/recipes/:id"
                   render={(props) => <Recipe {...props} />}
                 />
-                <Route exact path="/submit">
-                  <Submit />
-                </Route>
+                <Route exact path="/submit" render={() => <Submit />} />
                 <Route component={Uhoh} />
-              </Switch>
+              </Routes>
             </Router>
           </main>
         </AppContext.Provider>

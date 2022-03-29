@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import AppContext from "../App/AppContext";
-import "./TopBar.css";
 
 export default class TopBar extends Component {
   static contextType = AppContext;

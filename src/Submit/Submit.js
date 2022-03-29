@@ -1,84 +1,57 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import "./Submit.css";
+import React, { useContext, useState } from "react";
 import ApiService from "../Api/api-service";
 
-import AppContext from "../App/AppContext";
+export const Submit = () => {
+  const [name, setName] = useState("");
+  const [cuisine, setCuisine] = useState("british");
+  const [prepTime, setPrepTime] = useState(0);
+  const [cookTime, setCookTime] = useState(0);
+  const [complex, setComplex] = useState("no");
+  const [ingredients, setIngredients] = useState([]);
+  const [instructions, setInstructions] = useState([]);
 
-class Submit extends Component {
-  static contextType = AppContext;
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      prep_time: "",
-      cook_time: "",
-      cuisine: "british",
-      complex: "no",
-      ingredients: [],
-      instructions: [],
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleIngChange = this.handleIngChange.bind(this);
-    this.handleInstrChange = this.handleInstrChange.bind(this);
-    this.handleNumberChange = this.handleNumberChange.bind(this);
-    this.removeIngredientField = this.removeIngredientField.bind(this);
-  }
-
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  handleNumberChange(e) {
-    this.setState({ [e.target.name]: parseInt(e.target.value, 10) });
-  }
-
-  addIngredientField = () => {
-    this.setState({
-      ingredients: [...this.state.ingredients, { name: "", amount: "" }],
+  const addIngredientField = () => {
+    setIngredients({
+      ingredients: [...ingredients, { name: "", amount: "" }],
     });
   };
-  removeIngredientField = (e, val) => {
+  const removeIngredientField = (e, val) => {
     e.preventDefault();
-    let ings = Array.from(this.state.ingredients);
+    let ings = Array.from(ingredients);
     let blah = ings.filter((item) => item !== val);
-    this.setState({
-      ingredients: blah,
-    });
+    setIngredients(...blah);
   };
 
-  addInstructionField = () => {
-    this.setState({
-      instructions: [...this.state.instructions, { instructions: "" }],
+  const addInstructionField = () => {
+    setInstructions({
+      instructions: [...instructions, { instructions: "" }],
     });
   };
-  removeInstructionField = (e, val) => {
+  const removeInstructionField = (e, val) => {
     e.preventDefault();
-    let ings = Array.from(this.state.instructions);
+    let ings = Array.from(instructions);
     let blah = ings.filter((item) => item !== val);
-    this.setState({
-      instructions: blah,
-    });
+    setInstructions(...blah);
   };
 
-  handleInstrChange = (e) => {
-    let instrc = [...this.state.instructions];
+  const handleInstrChange = (e) => {
+    let instrc = [...instructions];
     instrc[e.target.name].instructions = e.target.value;
-    this.setState({ instructions: instrc });
+    setInstructions({ instructions: instrc });
   };
 
-  handleIngChange = (e, piece) => {
-    let ings = [...this.state.ingredients];
+  const handleIngChange = (e, piece) => {
+    let ings = [...ingredients];
     if (piece === "name") {
       ings[e.target.name].name = e.target.value;
     } else if (piece === "amount") {
       ings[e.target.name].amount = e.target.value;
     }
-    this.setState({ ingredients: ings });
+    setIngredients({ ingredients: ings });
   };
 
-  renderInstrInputs = () => {
-    return this.state.instructions.map((val, idx) => {
+  const renderInstrInputs = () => {
+    return instructions.map((val, idx) => {
       let instrcId = `ing-${idx}`;
       return (
         <section key={idx}>
@@ -86,10 +59,10 @@ class Submit extends Component {
           <textarea
             name={`${idx}`}
             value={val.instructions}
-            onChange={(e) => this.handleInstrChange(e)}
+            onChange={(e) => handleInstrChange(e)}
             required
           />
-          <button onClick={(e) => this.removeInstructionField(e, val)}>
+          <button onClick={(e) => removeInstructionField(e, val)}>
             remove
           </button>
         </section>
@@ -97,117 +70,116 @@ class Submit extends Component {
     });
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.ingredients.length < 2) {
+    if (ingredients.length < 2) {
       alert("Please add more ingredients");
-    } else if (this.state.instructions.length < 2) {
+    } else if (instructions.length < 2) {
       alert("Please add more instructions");
     } else {
-      ApiService.submitRecipe(this.state);
+      ApiService.submitRecipe({
+        name,
+        cuisine,
+        prepTime,
+        cookTime,
+        complex,
+        ingredients,
+        instructions,
+      });
     }
   };
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+  return (
+    <form onSubmit={handleSubmit.bind(this)}>
+      <fieldset>
+        <legend>submit a new recipe</legend>
         <fieldset>
-          <legend>submit a new recipe</legend>
-          <fieldset>
-            <section>
-              <label>name:</label>
-              <input
-                type="text"
-                onChange={this.handleChange}
-                name="name"
-                required
-              />
-            </section>
-            <section>
-              <label>cuisine:</label>
-              <select name="cuisine" onChange={this.handleChange}>
-                <option value="american">american</option>
-                <option value="british">british</option>
-                <option value="chinese">chinese</option>
-                <option value="indian">indian</option>
-                <option value="italian">italian</option>
-                <option value="mexican">mexican</option>
-              </select>
-            </section>
-            <section>
-              <label>prep time:</label>
-              <input
-                type="number"
-                onChange={this.handleNumberChange}
-                name="prep_time"
-                placeholder="in minutes"
-                required
-              />
-            </section>
-            <section>
-              <label>cook time:</label>
-              <input
-                type="number"
-                onChange={this.handleNumberChange}
-                name="cook_time"
-                placeholder="in minutes"
-                required
-              />
-            </section>
+          <section>
+            <label>name:</label>
+            <input
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+              name="name"
+              required
+            />
+          </section>
+          <section>
+            <label>cuisine:</label>
+            <select name="cuisine" onChange={(e) => setCuisine(e.target.value)}>
+              <option value="american">american</option>
+              <option value="british">british</option>
+              <option value="chinese">chinese</option>
+              <option value="indian">indian</option>
+              <option value="italian">italian</option>
+              <option value="mexican">mexican</option>
+            </select>
+          </section>
+          <section>
+            <label>prep time:</label>
+            <input
+              type="number"
+              onChange={(e) => setPrepTime(e.target.value)}
+              name="prepTime"
+              placeholder="in minutes"
+              required
+            />
+          </section>
+          <section>
+            <label>cook time:</label>
+            <input
+              type="number"
+              onChange={(e) => setCookTime(e.target.value)}
+              name="cookTime"
+              placeholder="in minutes"
+              required
+            />
+          </section>
 
-            <section>
-              <label>is it complex?</label>
-              <select name="complex" onChange={this.handleChange}>
-                <option value="no">no</option>
-                <option value="yes">yes</option>
-              </select>
-            </section>
-          </fieldset>
-          <fieldset>
-            <legend>ingredients</legend>
-            <button onClick={this.addIngredientField}>add ingredient</button>
-            {this.state.ingredients.length > 0
-              ? this.state.ingredients.map((val, idx) => {
-                  let ingId = `ing-${idx}`,
-                    amountId = `amount-${idx}`;
-                  return (
-                    <section key={idx}>
-                      <label htmlFor={ingId}>{`Ingredient #${idx + 1}`}</label>
-                      <input
-                        type="text"
-                        name={`${idx}`}
-                        value={val.name}
-                        onChange={(e) => this.handleIngChange(e, "name")}
-                        required
-                      />
-                      <label htmlFor={amountId}>{`Amount #${idx + 1}`}</label>
-                      <input
-                        type="text"
-                        value={val.amount}
-                        name={`${idx}`}
-                        onChange={(e) => this.handleIngChange(e, "amount")}
-                        required
-                      />
-                      <button
-                        onClick={(e) => this.removeIngredientField(e, val)}
-                      >
-                        remove
-                      </button>
-                    </section>
-                  );
-                })
-              : null}
-          </fieldset>
-          <fieldset>
-            <legend>instructions</legend>
-            <button onClick={this.addInstructionField}>add instruction</button>
-            {this.renderInstrInputs()}
-          </fieldset>
+          <section>
+            <label>is it complex?</label>
+            <select name="complex" onChange={(e) => setComplex(e.target.value)}>
+              <option value="no">no</option>
+              <option value="yes">yes</option>
+            </select>
+          </section>
         </fieldset>
-        <button type="submit">submit</button>
-      </form>
-    );
-  }
-}
-
-export default withRouter(Submit);
+        <fieldset>
+          <legend>ingredients</legend>
+          <button onClick={addIngredientField()}>add ingredient</button>
+          {ingredients?.map((val, idx) => {
+            let ingId = `ing-${idx}`,
+              amountId = `amount-${idx}`;
+            return (
+              <section key={idx}>
+                <label htmlFor={ingId}>{`Ingredient #${idx + 1}`}</label>
+                <input
+                  type="text"
+                  name={`${idx}`}
+                  value={val.name}
+                  onChange={(e) => handleIngChange(e, "name")}
+                  required
+                />
+                <label htmlFor={amountId}>{`Amount #${idx + 1}`}</label>
+                <input
+                  type="text"
+                  value={val.amount}
+                  name={`${idx}`}
+                  onChange={(e) => handleIngChange(e, "amount")}
+                  required
+                />
+                <button onClick={(e) => removeIngredientField(e, val)}>
+                  remove
+                </button>
+              </section>
+            );
+          })}
+        </fieldset>
+        <fieldset>
+          <legend>instructions</legend>
+          <button onClick={addInstructionField}>add instruction</button>
+          {renderInstrInputs()}
+        </fieldset>
+      </fieldset>
+      <button type="submit">submit</button>
+    </form>
+  );
+};

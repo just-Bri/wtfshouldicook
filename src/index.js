@@ -1,7 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import App from "./App/App";
-import "./index.css";
-import "./fonts/CascadiaCode-Regular-VTT.ttf";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const container = document.getElementById("root");
+
+// Create a root.
+const root = ReactDOM.createRoot(container);
+root.render(<App name="Saeloun blog" />);

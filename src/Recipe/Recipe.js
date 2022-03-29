@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import AppContext from "../App/AppContext";
-import "./Recipe.css";
 import ApiService from "../Api/api-service";
 import Uhoh from "../Uhoh/Uhoh";
 
