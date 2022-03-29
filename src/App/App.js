@@ -18,24 +18,24 @@ export default class App extends Component {
     this.state = {
       craving: "",
       cuisine: "",
-      complex: ""
+      complex: "",
     };
   }
 
-  updateCraving = craving => {
+  updateCraving = (craving) => {
     this.setState({
-      craving: craving
+      craving: craving,
     });
   };
-  updateCuisine = cuisine => {
+  updateCuisine = (cuisine) => {
     this.setState({
-      cuisine: cuisine
+      cuisine: cuisine,
     });
   };
-  updateComplex = complex => {
+  updateComplex = (complex) => {
     this.setState(
       {
-        complex: complex
+        complex: complex,
       },
       () => this.getRecipe()
     );
@@ -46,14 +46,14 @@ export default class App extends Component {
 
   render() {
     return (
-      <section className="App">
+      <section>
         <AppContext.Provider
           value={{
             updateCraving: this.updateCraving,
             updateCuisine: this.updateCuisine,
             updateComplex: this.updateComplex,
             recipeToDisplay: this.state.recipe,
-            getRecipe: this.getRecipe
+            getRecipe: this.getRecipe,
           }}
         >
           <TopBar />
@@ -80,7 +80,7 @@ export default class App extends Component {
                 <Route
                   exact
                   path="/recipes/:id"
-                  render={props => <Recipe {...props} />}
+                  render={(props) => <Recipe {...props} />}
                 />
                 <Route exact path="/submit">
                   <Submit />

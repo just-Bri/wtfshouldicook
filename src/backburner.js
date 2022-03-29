@@ -1,20 +1,20 @@
 // From App.js
 // user accounts on back burner for now
-logIn = e => {
+logIn = (e) => {
   e.preventDefault();
   this.setState({
-    loggedIn: true
+    loggedIn: true,
   });
 };
-logOut = e => {
+logOut = (e) => {
   e.preventDefault();
   this.setState({
-    loggedIn: false
+    loggedIn: false,
   });
 };
 
 // Recipe.js picture
-<section className="url-container">
+<section>
   <label>Picture Url</label>
   <input
     type="text"
@@ -28,23 +28,13 @@ logOut = e => {
 {
   this.context.loggedIn ? (
     <>
-      <a href="/account" className="top-account-button">
-        Account
-      </a>
-      <a
-        href="/"
-        onClick={e => this.context.logOut(e)}
-        className="top-logout-button"
-      >
+      <a href="/account">Account</a>
+      <a href="/" onClick={(e) => this.context.logOut(e)}>
         Logout
       </a>
     </>
   ) : (
-    <a
-      href="/"
-      onClick={e => this.context.logIn(e)}
-      className="top-login-button"
-    >
+    <a href="/" onClick={(e) => this.context.logIn(e)}>
       Login
     </a>
   );

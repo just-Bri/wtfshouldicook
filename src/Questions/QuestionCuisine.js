@@ -6,12 +6,11 @@ export default class QuestionCuisine extends Component {
   static contextType = AppContext;
   render() {
     return (
-      <section className="cuisine-options-container">
-        <label className="cuisine-header header">what sounds good?</label>
-        <ul className="cuisine-options-list option-list">
-          <li className="cuisine-option">
+      <section>
+        <label>what sounds good?</label>
+        <ul>
+          <li>
             <Link
-              className="cuisine-link"
               to="/complex"
               onClick={() => {
                 this.context.updateCuisine("american");
@@ -20,9 +19,8 @@ export default class QuestionCuisine extends Component {
               american
             </Link>
           </li>
-          <li className="cuisine-option">
+          <li>
             <Link
-              className="cuisine-link"
               to="/complex"
               onClick={() => {
                 this.context.updateCuisine("british");
@@ -31,9 +29,8 @@ export default class QuestionCuisine extends Component {
               british
             </Link>
           </li>
-          <li className="cuisine-option">
+          <li>
             <Link
-              className="cuisine-link"
               to="/complex"
               onClick={() => {
                 this.context.updateCuisine("chinese");
@@ -42,9 +39,8 @@ export default class QuestionCuisine extends Component {
               chinese
             </Link>
           </li>
-          <li className="cuisine-option">
+          <li>
             <Link
-              className="cuisine-link"
               to="/complex"
               onClick={() => {
                 this.context.updateCuisine("indian");
@@ -53,9 +49,8 @@ export default class QuestionCuisine extends Component {
               indian
             </Link>
           </li>
-          <li className="cuisine-option">
+          <li>
             <Link
-              className="cuisine-link"
               to="/complex"
               onClick={() => {
                 this.context.updateCuisine("italian");
@@ -64,9 +59,8 @@ export default class QuestionCuisine extends Component {
               italian
             </Link>
           </li>
-          <li className="cuisine-option">
+          <li>
             <Link
-              className="cuisine-link"
               to="/complex"
               onClick={() => {
                 this.context.updateCuisine("mexican");

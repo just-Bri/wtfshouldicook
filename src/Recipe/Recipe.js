@@ -12,35 +12,33 @@ export default class Recipe extends Component {
       recipeDetails: [],
       recipeIngredients: [],
       recipeInstructions: [],
-      done: "no"
+      done: "no",
     };
   }
 
   componentDidMount() {
     let id = this.props.match.params.id;
     ApiService.getAll(id)
-      .then(response => {
+      .then((response) => {
         this.setState({
           recipeDetails: response[0],
           recipeIngredients: response[1],
           recipeInstructions: response[2],
-          done: "yes"
+          done: "yes",
         });
       })
-      .catch(e => console.log("Promise.all e", e));
+      .catch((e) => console.log("Promise.all e", e));
   }
 
   recDetails = () => {
     return this.state.recipeDetails.map((item, i) => {
       return (
-        <ul key={i} className="specific-details">
-          <li className="recipe-name">name: {item.name}</li>
-          <li className="recipe-cuisine">cuisine: {item.cuisine}</li>
-          <li className="recipe-complex">
-            complex: {item.complex === false ? "nope" : "yep"}
-          </li>
-          <li className="recipe-prep-time">prep time: {item.prep_time}</li>
-          <li className="recipe-cook-time">cook time: {item.cook_time}</li>
+        <ul key={i}>
+          <li>name: {item.name}</li>
+          <li>cuisine: {item.cuisine}</li>
+          <li>complex: {item.complex === false ? "nope" : "yep"}</li>
+          <li>prep time: {item.prep_time}</li>
+          <li>cook time: {item.cook_time}</li>
         </ul>
       );
     });
@@ -49,9 +47,9 @@ export default class Recipe extends Component {
   recIngs = () => {
     return this.state.recipeIngredients.map((item, i) => {
       return (
-        <tr key={i} className="ing-row">
-          <td className="specific-ing-item">{item.name}</td>
-          <td className="specific-ing-item">{item.amount}</td>
+        <tr key={i}>
+          <td>{item.name}</td>
+          <td>{item.amount}</td>
         </tr>
       );
     });
@@ -61,7 +59,7 @@ export default class Recipe extends Component {
     return this.state.recipeInstructions.map((item, i) => {
       return (
         <React.Fragment key={i}>
-          <li className="specific-instrc-item">
+          <li>
             Step {i + 1}: {item.instructions}
           </li>
         </React.Fragment>
@@ -71,23 +69,23 @@ export default class Recipe extends Component {
 
   render() {
     return this.state.recipeDetails.length > 0 ? (
-      <section className="specific-container">
+      <section>
         {this.recDetails()}
-        <section className="ing-container">
-          <h3 className="specific-ing-header">INGREDIENTS</h3>
-          <table className="specific-ing-list">
+        <section>
+          <h3>INGREDIENTS</h3>
+          <table>
             <tbody>
-              <tr className="table-header-row">
-                <td className="specific-ing-item">ITEM</td>
-                <td className="specific-ing-item">AMOUNT</td>
+              <tr>
+                <td>ITEM</td>
+                <td>AMOUNT</td>
               </tr>
               {this.recIngs()}
             </tbody>
           </table>
         </section>
-        <section className="instr-container">
-          <h3 className="specific-instrc-header">INSTRUCTIONS</h3>
-          <ul className="specific-instrc-list">{this.recInstr()}</ul>
+        <section>
+          <h3>INSTRUCTIONS</h3>
+          <ul>{this.recInstr()}</ul>
         </section>
       </section>
     ) : this.state.done === "yes" ? (
