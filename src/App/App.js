@@ -5,12 +5,12 @@ import AppContext from "./AppContext";
 import { QuestionOpening } from "../Questions/QuestionOpening";
 import QuestionCuisine from "../Questions/QuestionCuisine";
 import QuestionComplex from "../Questions/QuestionComplex";
-import Recipe from "../Recipe/Recipe";
+import { Recipe } from "../Recipe/Recipe";
 import TopBar from "../TopBar/TopBar";
 import { Submit } from "../Submit/Submit";
 import ApiService from "../Api/api-service";
 import "../config";
-import Uhoh from "../Uhoh/Uhoh";
+import { Uhoh } from "../Uhoh/Uhoh";
 
 export default class App extends Component {
   constructor() {
@@ -46,18 +46,18 @@ export default class App extends Component {
 
   render() {
     return (
-      <section>
-        <AppContext.Provider
-          value={{
-            updateCraving: this.updateCraving,
-            updateCuisine: this.updateCuisine,
-            updateComplex: this.updateComplex,
-            recipeToDisplay: this.state.recipe,
-            getRecipe: this.getRecipe,
-          }}
-        >
+      <AppContext.Provider
+        value={{
+          updateCraving: this.updateCraving,
+          updateCuisine: this.updateCuisine,
+          updateComplex: this.updateComplex,
+          recipeToDisplay: this.state.recipe,
+          getRecipe: this.getRecipe,
+        }}
+      >
+        <main>
           <TopBar />
-          <main>
+          <section>
             <Router>
               <Routes>
                 <Route path="/open" element={<QuestionOpening />} />
@@ -70,15 +70,15 @@ export default class App extends Component {
                 <Route
                   exact
                   path="/recipes/:id"
-                  element={(props) => <Recipe {...props} />}
+                  element={<Recipe />}
                 />
                 <Route exact path="/submit" element={<Submit />} />
-                <Route element={Uhoh} />
+                <Route element={<Uhoh />} />
               </Routes>
             </Router>
-          </main>
-        </AppContext.Provider>
-      </section>
+          </section>
+        </main>
+      </AppContext.Provider>
     );
   }
 }
