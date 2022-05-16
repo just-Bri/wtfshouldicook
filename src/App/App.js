@@ -60,20 +60,20 @@ export default class App extends Component {
           <main>
             <Router>
               <Routes>
-                <Route exact path="/" render={() => <QuestionOpening />} />
-                <Route path="/cuisine" render={() => <QuestionCuisine />} />
+                <Route path="/open" element={<QuestionOpening />} />
+                <Route exact path="/cuisine" element={<QuestionCuisine />} />
                 <Route
                   exact
                   path="/complex"
-                  render={() => <QuestionComplex />}
+                  element={<QuestionComplex />}
                 />
                 <Route
                   exact
                   path="/recipes/:id"
-                  render={(props) => <Recipe {...props} />}
+                  element={(props) => <Recipe {...props} />}
                 />
-                <Route exact path="/submit" render={() => <Submit />} />
-                <Route component={Uhoh} />
+                <Route exact path="/submit" element={<Submit />} />
+                <Route element={Uhoh} />
               </Routes>
             </Router>
           </main>

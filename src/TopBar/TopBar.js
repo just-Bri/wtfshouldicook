@@ -5,10 +5,12 @@ export default class TopBar extends Component {
   static contextType = AppContext;
   render() {
     return (
-      <section>
-        <a href="/">get a recipe</a>
-        <a href="/submit">submit a recipe</a>
-      </section>
+      <nav>
+        <ul>
+          <li><a href="/open">get a recipe</a></li>
+          <li><a href="/submit">submit a recipe</a></li>
+        </ul>
+      </nav>
     );
   }
 }
