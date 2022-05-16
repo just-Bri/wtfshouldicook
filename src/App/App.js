@@ -57,6 +57,7 @@ export default class App extends Component {
       >
         <main>
           <TopBar />
+          <hr />
           <section>
             <Router>
               <Routes>
