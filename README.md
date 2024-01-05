@@ -6,7 +6,8 @@ I've always enjoyed food and cooking so I figured this would be a fun project. O
 
 A simple website for getting a recipe when you just can't decide!
 
-See it live at [wtfshouldicook](https://wtfshouldicook.com)
+~See it live at [wtfshouldicook](https://wtfshouldicook.com)~  
+(NOTE: live version has been shut down)
 
 Documentation for API: [wtfshouldicook-api](https://github.com/reifnotreef/wtfshouldicook-api)
 
